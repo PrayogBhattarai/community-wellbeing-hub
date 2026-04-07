@@ -1,0 +1,347 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News & Stories — Wellbeing Hub</title>
+  <meta name="description" content="Community news, success stories, and wellbeing updates from the Wellbeing Hub in Dagenham." />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header id="site-header">
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Community Wellbeing Hub Logo" style="height:48px; width:auto; vertical-align:middle;" />
+        <span style="margin-left: 0.5em; vertical-align:middle; font-weight: bold; font-size: 1.2em;">Wellbeing Hub</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="booking.html">Book</a></li>
+        <li><a href="news.html" aria-current="page">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-btn" id="theme-btn" aria-label="Toggle dark mode">🌙</button>
+        <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="events.html">Events</a>
+      <a href="booking.html">Book</a>
+      <a href="news.html" aria-current="page">News</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="job-seekers.html">Job Seekers</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Breadcrumb -->
+    <div class="container" style="padding-top:1rem;">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span aria-current="page">News & Stories</span>
+      </nav>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero hero-min-height">
+      <div class="hero-bg">
+        <img src="images/hero-community-centre.jpg" alt="Community volunteers working together" loading="eager" />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="container container-width">
+        <div class="hero-content">
+          <span class="badge">Updates & Stories</span>
+          <h1>News &amp; Success Stories</h1>
+          <p>Stay informed about new initiatives, community stories, and the real lives being changed every day at the Wellbeing Hub.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest News -->
+    <section class="section container">
+      <div class="text-center mb-14 fade-up">
+        <h2 class="section-title">Latest News</h2>
+        <p class="section-sub">Community updates, programme launches, and wellbeing tips.</p>
+
+        <!-- Filter Buttons -->
+        <div class="filter-buttons" style="margin-top:1.5rem;">
+          <button class="filter-btn active" data-category="all">All Stories</button>
+          <button class="filter-btn" data-category="programs">Programs</button>
+          <button class="filter-btn" data-category="wellbeing">Wellbeing</button>
+          <button class="filter-btn" data-category="community">Community</button>
+          <button class="filter-btn" data-category="employment">Employment</button>
+        </div>
+      </div>
+
+      <div class="grid grid-2" style="gap:2rem;" id="news-grid">
+
+        <!-- Article 1 -->
+        <article class="news-card fade-up" data-category="programs">
+          <img
+            src="images/news-yoga.jpg"
+            alt="Residents taking part in outdoor yoga class"
+            class="news-image"
+          />
+          <div class="tag-row">
+            <span class="tag-badge tag-primary">Programs</span>
+          </div>
+          <h3>New Outdoor Yoga Classes Launch</h3>
+          <p class="news-date">15 March 2026</p>
+          <p>Celebrate the arrival of spring with our new outdoor yoga sessions in the local park. Sessions run Tuesday &amp; Thursday mornings at 10 AM. All levels welcome — bring a mat and join our growing community.</p>
+          <a href="services.html" class="learn-more">Learn About Classes →</a>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="news-card fade-up" data-category="wellbeing">
+          <img
+            src="images/news-mental-health.jpg"
+            alt="Group of people at a mental health awareness event"
+            class="news-image"
+          />
+          <div class="tag-row">
+            <span class="tag-badge tag-secondary">Wellbeing</span>
+          </div>
+          <h3>Mental Health Awareness Week Success</h3>
+          <p class="news-date">10 March 2026</p>
+          <p>Over 200 community members joined our Mental Health Awareness Week events! From panel discussions to wellness workshops, the response was incredible. Thank you to every volunteer who made it possible.</p>
+          <a href="services.html" class="learn-more">View Services →</a>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="news-card fade-up" data-category="employment">
+          <img
+            src="images/news-cv-workshop.jpg"
+            alt="Job seekers in a CV and interview workshop"
+            class="news-image"
+          />
+          <div class="tag-row">
+            <span class="tag-badge tag-accent">Employment</span>
+          </div>
+          <h3>CV Workshop Helps 15 Job Seekers</h3>
+          <p class="news-date">5 March 2026</p>
+          <p>Last month's CV and interview skills workshops resulted in 15 participants receiving job interviews. Our employment support team continues to help clients break into the job market with confidence.</p>
+          <a href="job-seekers.html" class="learn-more">Explore Job Support →</a>
+        </article>
+
+        <!-- Article 4 -->
+        <article class="news-card fade-up" data-category="programs">
+          <img
+            src="images/news-art-therapy.jpg"
+            alt="Art therapy session with painting"
+            class="news-image"
+          />
+          <div class="tag-row">
+            <span class="tag-badge tag-primary">Programs</span>
+          </div>
+          <h3>Art Therapy Unlocks Creative Expression</h3>
+          <p class="news-date">28 February 2026</p>
+          <p>Our new art therapy initiative is transforming lives. Participants are discovering healing through creative expression in a supportive, judgement-free environment. Sessions now available every Saturday afternoon.</p>
+          <a href="services.html" class="learn-more">Book a Session →</a>
+        </article>
+
+        <!-- Article 5 -->
+        <article class="news-card fade-up" data-category="community">
+          <img
+            src="images/news-garden.jpg"
+            alt="Residents taking part in a community garden project"
+            class="news-image"
+          />
+          <div class="tag-row">
+            <span class="tag-badge tag-secondary">Community</span>
+          </div>
+          <h3>Community Garden Project Blooms</h3>
+          <p class="news-date">20 February 2026</p>
+          <p>Our community garden project has grown beyond expectations. Members are connecting with nature while building lasting friendships. Come join us every weekend to plant, grow, and harvest together.</p>
+          <a href="events.html" class="learn-more">View Events →</a>
+        </article>
+
+        <!-- Article 6 -->
+        <article class="news-card fade-up" data-category="wellbeing">
+          <img
+            src="images/news-meditation.jpg"
+            alt="Person meditating calmly outdoors"
+            class="news-image"
+          />
+          <div class="tag-row">
+            <span class="tag-badge tag-secondary">Wellbeing</span>
+          </div>
+          <h3>Wellbeing Tips: Stress Management Strategies</h3>
+          <p class="news-date">15 February 2026</p>
+          <p>Feeling overwhelmed? Check out our new guide on simple, scientifically-backed stress management techniques. From breathing exercises to daily habits, learn practical ways to reclaim calm and balance.</p>
+          <a href="contact.html" class="learn-more">Get Support →</a>
+        </article>
+
+      </div>
+
+      <!-- Empty state when filter shows nothing -->
+      <div id="news-empty" style="display:none;text-align:center;padding:3rem 1rem;">
+        <p style="font-size:1.1rem;color:var(--muted-fg);">No stories in this category yet — check back soon!</p>
+        <button class="filter-btn active" style="margin-top:1rem;" onclick="resetFilter()">View All Stories</button>
+      </div>
+
+    </section>
+
+    <!-- -- SUCCESS STORIES -- -->
+    <section class="section container padding-top-0">
+      <div class="text-center mb-14 fade-up">
+        <h2 class="section-title">Success Stories</h2>
+        <p class="section-sub">Real people, real results — lives changed right here in our community.</p>
+      </div>
+
+      <div class="grid grid-3" style="gap:1.75rem;">
+
+        <div class="testimonial-card fade-up">
+          <p style="font-style:italic;line-height:1.7;margin-bottom:1.25rem;padding-top:.75rem;">"The mental health counselling completely changed my life. I finally feel like myself again. The team here never judged me — they just helped."</p>
+          <p style="font-weight:700;margin-bottom:.2rem;">— Sarah, 32</p>
+          <p style="font-size:.82rem;color:var(--primary);font-weight:600;margin:0;">Mental Health Support</p>
+        </div>
+
+        <div class="testimonial-card fade-up">
+          <p style="font-style:italic;line-height:1.7;margin-bottom:1.25rem;padding-top:.75rem;">"I came in not knowing anyone. Now I have friends, a purpose, and a job. The CV workshop got me my first interview in years and I got the role!"</p>
+          <p style="font-weight:700;margin-bottom:.2rem;">— Marcus, 45</p>
+          <p style="font-size:.82rem;color:var(--primary);font-weight:600;margin:0;">Employment Support</p>
+        </div>
+
+        <div class="testimonial-card fade-up">
+          <p style="font-style:italic;line-height:1.7;margin-bottom:1.25rem;padding-top:.75rem;">"The yoga classes helped my anxiety more than anything else I'd tried. And it's completely free — I still can't believe a place like this exists."</p>
+          <p style="font-weight:700;margin-bottom:.2rem;">— Priya, 28</p>
+          <p style="font-size:.82rem;color:var(--primary);font-weight:600;margin:0;">Fitness &amp; Wellbeing</p>
+        </div>
+
+        <div class="testimonial-card fade-up">
+          <p style="font-style:italic;line-height:1.7;margin-bottom:1.25rem;padding-top:.75rem;">"After my divorce I felt completely lost. The community groups here gave me a reason to get out of the house. I've made friends I'll have for life."</p>
+          <p style="font-weight:700;margin-bottom:.2rem;">— Denise, 51</p>
+          <p style="font-size:.82rem;color:var(--primary);font-weight:600;margin:0;">Community Groups</p>
+        </div>
+
+        <div class="testimonial-card fade-up">
+          <p style="font-style:italic;line-height:1.7;margin-bottom:1.25rem;padding-top:.75rem;">"The digital skills course made me comfortable with computers for the first time. Now I can apply for remote jobs and help my kids with their homework!"</p>
+          <p style="font-weight:700;margin-bottom:.2rem;">— Ahmed, 38</p>
+          <p style="font-size:.82rem;color:var(--primary);font-weight:600;margin:0;">Digital Skills Training</p>
+        </div>
+
+        <div class="testimonial-card fade-up">
+          <p style="font-style:italic;line-height:1.7;margin-bottom:1.25rem;padding-top:.75rem;">"My son was really struggling socially. Since joining the youth club he's come out of his shell entirely. The staff are incredible with the young people."</p>
+          <p style="font-weight:700;margin-bottom:.2rem;">— Fatima, 39</p>
+          <p style="font-size:.82rem;color:var(--primary);font-weight:600;margin:0;">Youth Programs</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section container padding-top-0">
+      <div class="cta-banner fade-up">
+        <img src="images/hero-community-people.jpg" alt="Community members celebrating success together" />
+        <div class="cta-overlay" style="background:hsla(150,25%,30%,.87);"></div>
+        <div class="cta-content">
+          <h2>Your Story Could Be Next</h2>
+          <p>Every journey starts with one step. Come in, meet our team, and let's see how we can help you.</p>
+          <div class="btn-group">
+            <a href="contact.html" class="btn btn-primary">Share Your Story →</a>
+            <a href="contact.html" class="btn btn-ghost">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="Community Wellbeing Hub" />
+        </div>
+        <p>Your central point of contact for health, happiness, and community support. Serving Dagenham and surrounding areas since 2020.</p>
+        <div class="social-links"><a class="social-link" href="#">📘 Facebook</a><a class="social-link" href="#">📸 Instagram</a><a class="social-link" href="#">🐦 Twitter</a></div>
+        <p style="font-size:.75rem;margin-top:.75rem;">In partnership with local council services.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="events.html">Events</a>
+          <a href="booking.html">Book</a>
+          <a href="news.html">News</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="job-seekers.html">Job Seekers</a>
+        </div>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="footer-contact">
+          <p>📍 123 Community Lane, Dagenham, RM10</p>
+          <p>📞 0123-456-789</p>
+          <p>✉️ hello@wellbeinghub.com</p>
+        </div>
+        <h4 style="margin-top:1.5rem;">Need Help?</h4>
+        <div class="footer-contact">
+          <p>🆘 Use the SOS button for urgent support</p>
+          <p>📞 Or call our hub directly</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Wellbeing Hub. All rights reserved.</div>
+  </footer>
+
+  <button class="sos-btn" onclick="showSOS()" aria-label="Get urgent help">
+    <div class="sos-icon">SOS</div>
+    URGENT HELP
+  </button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+  <script>
+    // -- Filter ------------------------------------------------
+    function resetFilter() {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('[data-category="all"]').classList.add('active');
+      document.querySelectorAll('.news-card').forEach(c => { c.style.display = ''; setTimeout(() => c.classList.add('visible'), 10); });
+      document.getElementById('news-empty').style.display = 'none';
+    }
+
+    document.querySelectorAll('.filter-btn[data-category]').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const cat = this.dataset.category;
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        let visible = 0;
+        document.querySelectorAll('.news-card').forEach(card => {
+          if (cat === 'all' || card.dataset.category === cat) {
+            card.style.display = '';
+            setTimeout(() => card.classList.add('visible'), 10);
+            visible++;
+          } else {
+            card.style.display = 'none';
+            card.classList.remove('visible');
+          }
+        });
+
+        document.getElementById('news-empty').style.display = visible === 0 ? 'block' : 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+
