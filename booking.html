@@ -1,0 +1,606 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Book a Session — Wellbeing Hub</title>
+  <meta name="description" content="Book a free wellbeing session at the Wellbeing Hub. No referral needed." />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <meta property="og:title" content="Book a Session — Wellbeing Hub" />
+  <meta property="og:description" content="Book a free wellbeing session at the Wellbeing Hub. No referral needed." />
+  <meta property="og:image" content="images/hero-reception.jpg" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" /><script defer src="js/app.js"></script>
+  <style>
+    /* -- Custom Calendar ----------------------------------- */
+    .cal-wrap {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      user-select: none;
+    }
+    .cal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: #fff;
+      padding: .9rem 1.25rem;
+    }
+    .cal-header h4 {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .cal-nav {
+      background: rgba(255,255,255,.2);
+      border: none;
+      color: #fff;
+      width: 2rem;
+      height: 2rem;
+      border-radius: .5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .18s;
+    }
+    .cal-nav:hover { background: rgba(255,255,255,.35); }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+      padding: .75rem;
+    }
+    .cal-day-name {
+      text-align: center;
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--muted-fg);
+      padding: .3rem 0;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .cal-day {
+      text-align: center;
+      padding: .5rem .2rem;
+      border-radius: .6rem;
+      font-size: .88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .15s, color .15s, transform .15s;
+      color: var(--fg);
+      border: 1.5px solid transparent;
+    }
+    .cal-day:hover:not(.cal-disabled):not(.cal-selected):not(.cal-empty) {
+      background: var(--primary-soft);
+      color: var(--primary);
+      border-color: var(--primary-light);
+      transform: scale(1.08);
+    }
+    .cal-day.cal-today {
+      border-color: var(--primary-light);
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .cal-day.cal-selected {
+      background: var(--primary);
+      color: #fff !important;
+      font-weight: 700;
+      border-color: var(--primary-dark);
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px hsla(152,38%,40%,.35);
+    }
+    .cal-day.cal-disabled {
+      color: var(--border);
+      cursor: not-allowed;
+    }
+    .cal-day.cal-empty { cursor: default; }
+
+    /* -- Time slots ---------------------------------------- */
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: .6rem;
+      margin-top: .75rem;
+    }
+    .time-slot {
+      padding: .55rem .4rem;
+      border: 1.5px solid var(--border);
+      border-radius: .75rem;
+      background: var(--card);
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--fg);
+      cursor: pointer;
+      text-align: center;
+      transition: background .18s, color .18s, border-color .18s, transform .18s;
+    }
+    .time-slot:hover:not(.time-taken) {
+      background: var(--primary-soft);
+      color: var(--primary);
+      border-color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+    .time-slot.time-selected {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary-dark);
+      box-shadow: 0 4px 12px hsla(152,38%,40%,.3);
+      transform: translateY(-2px);
+    }
+    .time-slot.time-taken {
+      background: var(--muted);
+      color: var(--border);
+      cursor: not-allowed;
+      pointer-events: none;
+      opacity: 0.45;
+      text-decoration: line-through;
+    }
+    .cal-selected-display {
+      background: var(--primary-soft);
+      border: 1.5px solid var(--primary-light);
+      border-radius: var(--radius);
+      padding: .6rem 1rem;
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 1.25rem;
+      display: none;
+    }
+    @media (max-width: 480px) {
+      .time-slots { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header id="site-header"><nav><a href="index.html" class="logo"><img src="images/logo.png" alt="Community Wellbeing Hub Logo" style="height:48px; width:auto; vertical-align:middle;" /><span style="margin-left: 0.5em; vertical-align:middle; font-weight: bold; font-size: 1.2em;">Wellbeing Hub</span></a>
+      <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="events.html">Events</a></li><li><a href="booking.html" aria-current="page">Book</a></li><li><a href="news.html">News</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+      <div class="nav-right"><button class="theme-btn" id="theme-btn" aria-label="Toggle dark mode">🌙</button><button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button></div></nav>
+    <div class="mobile-menu" id="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="events.html">Events</a><a href="booking.html" aria-current="page">Book</a><a href="news.html">News</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="job-seekers.html">Job Seekers</a></div>
+  </header>
+  <main id="main">
+    <div class="container" style="padding-top: 1rem;">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span aria-current="page">Booking</span>
+      </nav>
+    </div>
+
+    <section class="hero hero-min-height"><div class="hero-bg"><img src="images/hero-reception.jpg" alt="Friendly welcoming reception desk at the wellbeing hub" loading="eager" /><div class="hero-overlay"></div></div>
+      <div class="container container-width"><div class="hero-content"><span class="badge">Book a Session</span><h1>Book a Session</h1><p>Choose your service, select a time, and complete your details below.</p></div></div></section>
+
+    <section class="section container padding-top-0">
+      <div class="stepper">
+        <button class="step-btn active" type="button" aria-current="step"><span class="step-num">1</span>Service</button>
+        <button class="step-btn" type="button"><span class="step-num">2</span>When</button>
+        <button class="step-btn" type="button"><span class="step-num">3</span>Details</button>
+        <button class="step-btn" type="button"><span class="step-num">4</span>Review</button>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="booking-container">
+        <div class="booking-form">
+          
+          <div id="step-1">
+            <h2>Step 1: Select a Service</h2>
+            <p style="color: var(--muted-fg); margin-bottom: 2rem;">What would you like to book?</p>
+            
+            <div class="service-list">
+              <label class="service-option">
+                <input type="radio" name="service" value="Counselling Session" required />
+                <span>💬 Counselling Session</span>
+              </label>
+              <label class="service-option">
+                <input type="radio" name="service" value="Yoga Class" />
+                <span>🧘 Yoga Class</span>
+              </label>
+              <label class="service-option">
+                <input type="radio" name="service" value="Pilates Class" />
+                <span>🤸 Pilates Class</span>
+              </label>
+              <label class="service-option">
+                <input type="radio" name="service" value="Workshop" />
+                <span>🛠️ Workshop</span>
+              </label>
+              <label class="service-option">
+                <input type="radio" name="service" value="Group Activity" />
+                <span>🤝 Group Activity</span>
+              </label>
+              <label class="service-option">
+                <input type="radio" name="service" value="Consultation" />
+                <span>👥 Consultation</span>
+              </label>
+            </div>
+
+            <p id="error-service" class="error-msg" style="display:none;"></p>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+              <button type="button" class="btn btn-muted" onclick="prevStep()" style="flex: 1;" disabled>← Back</button>
+              <button type="button" class="btn btn-primary" onclick="nextStep()" style="flex: 1;">Next →</button>
+            </div>
+          </div>
+
+          <div id="step-2" style="display: none;">
+            <h2>Step 2: Pick Date &amp; Time</h2>
+            <p style="color:var(--muted-fg);margin-bottom:1.5rem;">When would you like to visit?</p>
+
+            <div id="selected-service-note" style="display:none;background:var(--primary-soft);border:1px solid var(--primary-light);border-radius:.8rem;padding:.7rem .9rem;margin-bottom:1rem;font-size:.9rem;">
+              Service selected: <strong id="selected-service-name">—</strong>
+              <a href="#" id="change-service-link" style="margin-left:.6rem;font-weight:700;">Change service</a>
+            </div>
+
+            <!-- Date input + calendar toggle -->
+            <div class="form-group">
+              <label style="font-weight:600;font-size:.92rem;display:block;margin-bottom:.6rem;">Select Date <span aria-hidden="true">*</span></label>
+              <div style="display:flex;gap:.5rem;align-items:center;">
+                <input type="text" id="date-display" placeholder="DD / MM / YYYY" class="form-input"
+                  style="flex:1;letter-spacing:.05em;"
+                  maxlength="14" autocomplete="off" />
+                <button type="button" id="cal-toggle-btn" aria-label="Open calendar"
+                  style="width:2.8rem;height:2.8rem;border-radius:.75rem;background:var(--primary);border:none;
+                         color:#fff;font-size:1.1rem;cursor:pointer;flex-shrink:0;
+                         transition:background .2s,transform .2s;display:flex;align-items:center;justify-content:center;">
+                  📅
+                </button>
+              </div>
+              <input type="hidden" id="date" name="date" />
+              <p id="error-date" class="error-msg" style="display:none;color:var(--destructive);font-size:.85rem;margin-top:.4rem;"></p>
+            </div>
+
+            <!-- Calendar dropdown -->
+            <div id="cal-dropdown" style="display:none;margin-top:.5rem;">
+              <div class="cal-wrap">
+                <div class="cal-header">
+                  <button class="cal-nav" id="cal-prev" aria-label="Previous month">&#8249;</button>
+                  <h4 id="cal-title"></h4>
+                  <button class="cal-nav" id="cal-next" aria-label="Next month">&#8250;</button>
+                </div>
+                <div class="cal-grid" id="cal-grid"></div>
+              </div>
+            </div>
+
+            <div class="cal-selected-display" id="cal-selected-display" style="margin-top:.75rem;">
+              📅 <span id="cal-selected-text"></span>
+            </div>
+
+            <!-- Time Slots -->
+            <div style="margin-top:1.5rem;">
+              <label style="font-weight:600;font-size:.92rem;display:block;margin-bottom:.75rem;">Select a Time <span aria-hidden="true">*</span></label>
+              <div class="time-slots" id="time-slots">
+                <button type="button" class="time-slot" data-time="9:00 AM">9:00 AM</button>
+                <button type="button" class="time-slot" data-time="10:00 AM">10:00 AM</button>
+                <button type="button" class="time-slot" data-time="11:00 AM">11:00 AM</button>
+                <button type="button" class="time-slot time-taken" data-time="12:00 PM" disabled>12:00 PM</button>
+                <button type="button" class="time-slot" data-time="2:00 PM">2:00 PM</button>
+                <button type="button" class="time-slot" data-time="3:00 PM">3:00 PM</button>
+                <button type="button" class="time-slot" data-time="4:00 PM">4:00 PM</button>
+                <button type="button" class="time-slot" data-time="6:00 PM">6:00 PM</button>
+                <button type="button" class="time-slot" data-time="7:00 PM">7:00 PM</button>
+              </div>
+              <input type="hidden" id="time" name="time" />
+              <p id="error-time" class="error-msg" style="display:none;color:var(--destructive);font-size:.85rem;margin-top:.4rem;"></p>
+            </div>
+
+            <div style="display:flex;gap:1rem;margin-top:2rem;">
+              <button type="button" class="btn btn-muted" onclick="prevStep()" style="flex:1;">← Back</button>
+              <button type="button" class="btn btn-primary" onclick="nextStep()" style="flex:1;">Next →</button>
+            </div>
+          </div>
+
+          <div id="step-3" style="display: none;">
+            <h2>Step 3: Your Details</h2>
+            <p style="color: var(--muted-fg); margin-bottom: 2rem;">Tell us about yourself.</p>
+
+            <div class="form-group">
+              <label for="name">Full Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name" class="form-input-2" placeholder="Your full name" required />
+              <p id="error-name" class="error-msg" style="display:none;"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" class="form-input-2" placeholder="your@email.com" required />
+              <p id="error-email" class="error-msg" style="display:none;"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number <span aria-hidden="true">*</span></label>
+              <input type="tel" id="phone" name="phone" class="form-input-2" placeholder="0123-456-789" required />
+              <p id="error-phone" class="error-msg" style="display:none;"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Any Special Needs? <span aria-hidden="true" style="opacity: 0.5;">(optional)</span></label>
+              <textarea id="notes" name="notes" class="form-input-2" placeholder="Let us know if you have any accessibility needs or preferences..."></textarea>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+              <button type="button" class="btn btn-muted" onclick="prevStep()" style="flex: 1;">← Back</button>
+              <button type="button" class="btn btn-primary" onclick="nextStep()" style="flex: 1;">Review →</button>
+            </div>
+          </div>
+
+          <div id="step-4" style="display: none;">
+            <h2>Step 4: Review & Confirm</h2>
+            <p style="color: var(--muted-fg); margin-bottom: 2rem;">Please review your booking details.</p>
+
+            <div class="summary-box">
+              <h3>📋 Your Booking</h3>
+              <div class="summary-grid">
+                <div>
+                  <span>Service</span>
+                  <strong id="review-service">—</strong>
+                </div>
+                <div>
+                  <span>Date</span>
+                  <strong id="review-date">—</strong>
+                </div>
+                <div>
+                  <span>Time</span>
+                  <strong id="review-time">—</strong>
+                </div>
+              </div>
+              <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                <div><span>Name:</span> <strong id="review-name">—</strong></div>
+                <div><span>Email:</span> <strong id="review-email">—</strong></div>
+                <div><span>Phone:</span> <strong id="review-phone">—</strong></div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+              <button type="button" class="btn btn-muted" onclick="prevStep()" style="flex: 1;">← Back</button>
+              <button type="button" class="btn btn-primary" onclick="submitBooking()" style="flex: 1;">✓ Confirm Booking</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="booking-info fade-up">
+          <h3>ℹ️ Booking Information</h3>
+          <ul>
+            <li>✓ All sessions are completely free</li>
+            <li>✓ No referral needed — just book</li>
+            <li>✓ Cancellations: 24 hours notice</li>
+            <li>✓ First-time? We'll explain everything</li>
+            <li>✓ Confidentiality guaranteed</li>
+          </ul>
+          <p>Can't find a time that works? Call us on <strong>0123-456-789</strong> to arrange an alternative.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="footer-grid"><div><div class="footer-logo"><img src="images/logo.png" alt="Community Wellbeing Hub" /></div><p>Your central point of contact for health, happiness, and community support. Serving Dagenham and surrounding areas since 2020.</p><p style="opacity:.5;font-size:.75rem;margin-top:.75rem;">In partnership with local council services.</p><div class="social-links"><a class="social-link" href="#">📘 Facebook</a><a class="social-link" href="#">📸 Instagram</a><a class="social-link" href="#">🐦 Twitter</a></div></div>
+      <div><h4>Navigate</h4><div class="footer-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="events.html">Events</a><a href="booking.html">Book</a><a href="news.html">News</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="job-seekers.html">Job Seekers</a></div></div>
+      <div><h4>Contact</h4><div class="footer-contact"><p>📍 123 Community Lane, Dagenham, RM10</p><p>📞 0123-456-789</p><p>✉️ hello@wellbeinghub.com</p></div><h4 style="margin-top:1.5rem;">Need Help?</h4><div class="footer-contact"><p>🆘 Use the SOS button for urgent support</p><p>📞 Or call our hub directly</p></div></div></div>
+    <div class="footer-bottom">© 2026 Wellbeing Hub. All rights reserved.</div></footer>
+
+  <button class="sos-btn" onclick="showSOS()" aria-label="Get urgent help"><div class="sos-icon">SOS</div>URGENT HELP</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+  <script>
+    /* -- Calendar State ---------------------------------------- */
+    const CAL = (function () {
+      const today      = new Date();
+      let viewYear     = today.getFullYear();
+      let viewMonth    = today.getMonth();
+      let selectedDate = null;
+      let isOpen       = false;
+
+      const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      const DAYS   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+      function render() {
+        document.getElementById('cal-title').textContent = MONTHS[viewMonth] + ' ' + viewYear;
+        const grid = document.getElementById('cal-grid');
+        grid.innerHTML = '';
+
+        DAYS.forEach(d => {
+          const el = document.createElement('div');
+          el.className   = 'cal-day-name';
+          el.textContent = d;
+          grid.appendChild(el);
+        });
+
+        const firstDay     = new Date(viewYear, viewMonth, 1).getDay();
+        const daysInMonth  = new Date(viewYear, viewMonth + 1, 0).getDate();
+        const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+        for (let i = 0; i < firstDay; i++) {
+          const el = document.createElement('div');
+          el.className = 'cal-day cal-empty';
+          grid.appendChild(el);
+        }
+
+        for (let d = 1; d <= daysInMonth; d++) {
+          const date = new Date(viewYear, viewMonth, d);
+          const el   = document.createElement('div');
+          el.className   = 'cal-day';
+          el.textContent = d;
+
+          const isPast   = date < todayMidnight;
+          const isSunday = date.getDay() === 0;
+
+          if (isPast || isSunday) {
+            el.classList.add('cal-disabled');
+          } else {
+            if (date.toDateString() === today.toDateString()) el.classList.add('cal-today');
+            if (selectedDate && date.toDateString() === selectedDate.toDateString()) el.classList.add('cal-selected');
+            el.addEventListener('click', () => pickDate(date));
+          }
+          grid.appendChild(el);
+        }
+      }
+
+      function pickDate(date) {
+        selectedDate = date;
+        viewYear  = date.getFullYear();
+        viewMonth = date.getMonth();
+
+        /* ISO value for validation */
+        document.getElementById('date').value = date.toISOString().split('T')[0];
+
+        /* Pretty text in the text input */
+        const dd   = String(date.getDate()).padStart(2,'0');
+        const mm   = String(date.getMonth() + 1).padStart(2,'0');
+        const yyyy = date.getFullYear();
+        document.getElementById('date-display').value = dd + ' / ' + mm + ' / ' + yyyy;
+
+        /* Confirmation bar */
+        const prettyFull = date.toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+        document.getElementById('cal-selected-text').textContent = prettyFull;
+        const disp = document.getElementById('cal-selected-display');
+        disp.style.display = 'block';
+
+        /* Hide error */
+        document.getElementById('error-date').style.display = 'none';
+
+        /* Close calendar after selection */
+        close();
+        render();
+      }
+
+      function open() {
+        isOpen = true;
+        document.getElementById('cal-dropdown').style.display = 'block';
+        document.getElementById('cal-toggle-btn').style.background = 'var(--secondary)';
+        render();
+      }
+
+      function close() {
+        isOpen = false;
+        document.getElementById('cal-dropdown').style.display = 'none';
+        document.getElementById('cal-toggle-btn').style.background = 'var(--primary)';
+      }
+
+      function toggle() { isOpen ? close() : open(); }
+
+      /* Jump calendar to a specific month/year */
+      function jumpTo(y, m) {
+        viewYear  = y;
+        viewMonth = m;
+        render();
+      }
+
+      return { toggle, open, close, pickDate, getSelected: () => selectedDate, jumpTo };
+    })();
+
+    /* -- Calendar nav buttons ------------------------------- */
+    document.getElementById('cal-prev').addEventListener('click', () => {
+      const title = document.getElementById('cal-title').textContent;
+      const [mName, y] = title.split(' ');
+      const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      let m = MONTHS.indexOf(mName);
+      m--; let yr = +y;
+      if (m < 0) { m = 11; yr--; }
+      CAL.jumpTo(yr, m);
+    });
+
+    document.getElementById('cal-next').addEventListener('click', () => {
+      const title = document.getElementById('cal-title').textContent;
+      const [mName, y] = title.split(' ');
+      const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      let m = MONTHS.indexOf(mName);
+      m++; let yr = +y;
+      if (m > 11) { m = 0; yr++; }
+      CAL.jumpTo(yr, m);
+    });
+
+    document.getElementById('cal-toggle-btn').addEventListener('click', () => CAL.toggle());
+
+    /* -- Typed date input ----------------------------------- */
+    document.getElementById('date-display').addEventListener('input', function () {
+      /* Auto-insert separators */
+      let raw = this.value.replace(/\D/g,'');
+      if (raw.length > 2 && raw.length <= 4)  raw = raw.slice(0,2) + ' / ' + raw.slice(2);
+      else if (raw.length > 4)                 raw = raw.slice(0,2) + ' / ' + raw.slice(2,4) + ' / ' + raw.slice(4,8);
+      this.value = raw;
+
+      /* Only parse when fully typed (8 digits) */
+      const digits = this.value.replace(/\D/g,'');
+      if (digits.length === 8) {
+        const dd   = parseInt(digits.slice(0,2), 10);
+        const mm   = parseInt(digits.slice(2,4), 10) - 1;
+        const yyyy = parseInt(digits.slice(4,8), 10);
+        const date = new Date(yyyy, mm, dd);
+        const today = new Date();
+        const todayMid = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+        if (
+          date.getFullYear() === yyyy &&
+          date.getMonth()    === mm   &&
+          date.getDate()     === dd   &&
+          date >= todayMid            &&
+          date.getDay()      !== 0
+        ) {
+          document.getElementById('date').value = date.toISOString().split('T')[0];
+          const prettyFull = date.toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+          document.getElementById('cal-selected-text').textContent = prettyFull;
+          document.getElementById('cal-selected-display').style.display = 'block';
+          document.getElementById('error-date').style.display = 'none';
+          /* Sync the calendar view to show this month */
+          CAL.jumpTo(yyyy, mm);
+        } else {
+          document.getElementById('date').value = '';
+          document.getElementById('cal-selected-display').style.display = 'none';
+        }
+      } else {
+        document.getElementById('date').value = '';
+        document.getElementById('cal-selected-display').style.display = 'none';
+      }
+    });
+
+    /* Close calendar when clicking outside */
+    document.addEventListener('click', function(e) {
+      const dropdown = document.getElementById('cal-dropdown');
+      const btn      = document.getElementById('cal-toggle-btn');
+      if (dropdown.style.display === 'block' && !dropdown.contains(e.target) && e.target !== btn) {
+        CAL.close();
+      }
+    });
+
+    /* -- Time Slot Picker ----------------------------------- */
+    document.querySelectorAll('.time-slot:not(.time-taken)').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.time-slot').forEach(b => b.classList.remove('time-selected'));
+        btn.classList.add('time-selected');
+        document.getElementById('time').value = btn.dataset.time;
+        document.getElementById('error-time').style.display = 'none';
+      });
+    });
+
+    /* -- Review summary ------------------------------------- */
+    function updateReview() {
+      const rawDate    = document.getElementById('date').value;
+      const prettyDate = rawDate
+        ? new Date(rawDate + 'T12:00:00').toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' })
+        : '—';
+      document.getElementById('review-service').textContent = document.querySelector('input[name="service"]:checked')?.value || '—';
+      document.getElementById('review-date').textContent    = prettyDate;
+      document.getElementById('review-time').textContent    = document.getElementById('time').value || '—';
+      document.getElementById('review-name').textContent    = document.getElementById('name').value || '—';
+      document.getElementById('review-email').textContent   = document.getElementById('email').value || '—';
+      document.getElementById('review-phone').textContent   = document.getElementById('phone').value || '—';
+    }
+
+    const originalNextStep = window.nextStep;
+    window.nextStep = function() {
+      if (document.getElementById('step-3')?.style.display !== 'none' &&
+          document.getElementById('step-4')?.style.display === 'none') {
+        updateReview();
+      }
+      if (typeof originalNextStep === 'function') originalNextStep();
+    };
+  </script>
+</body>
+</html>
+
+
+

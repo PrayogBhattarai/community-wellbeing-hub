@@ -1,0 +1,848 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services — Wellbeing Hub</title>
+  <meta name="description" content="Explore local wellbeing services including mental health, family support, physical activity, housing advice, and employment guidance." />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <meta name="theme-color" content="#3f8f67" />
+  <meta property="og:title" content="Our Services — Wellbeing Hub" />
+  <meta property="og:description" content="Free services covering mental health, physical wellbeing, family support, housing advice and employment guidance." />
+  <meta property="og:image" content="images/hero-counselling.jpg" />
+  <meta property="og:url" content="https://prayogbhattarai.github.io/community-wellbeing-hub/services.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Our Services — Wellbeing Hub" />
+  <meta name="twitter:description" content="Free services covering mental health, physical wellbeing, family support, housing advice and employment guidance." />
+  <meta name="twitter:image" content="images/hero-counselling.jpg" />
+  <link rel="canonical" href="https://prayogbhattarai.github.io/community-wellbeing-hub/services.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/app.js"></script>
+
+  <style>
+    .pt-sm { padding-top: 1rem; }
+    .mt-sm { margin-top: .75rem; }
+    .mt-md { margin-top: 1rem; }
+    .mt-lg { margin-top: 2rem; }
+    .hidden { display: none; }
+    .shrink-0 { flex-shrink: 0; }
+
+    .services-hero-copy {
+      max-width: 42rem;
+    }
+
+    .stats-bar {
+      background: hsl(152, 34%, 38%);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .5rem 2rem;
+      color: #fff;
+      font-size: .9rem;
+      font-weight: 600;
+      border-right: 1px solid rgba(255,255,255,.25);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-mark {
+      width: .8rem;
+      height: .8rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.95);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .stat-value {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .search-area {
+      background: var(--muted);
+      border: 1.5px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 1.5rem 1.75rem;
+      max-width: 560px;
+      margin: 2rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    .search-area-inner {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: .75rem;
+      padding: .7rem 1rem;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .search-area-inner:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px hsla(152,38%,40%,.12);
+    }
+
+    .search-area-inner input {
+      flex: 1;
+      border: none;
+      background: none;
+      font-family: var(--font-body);
+      font-size: .97rem;
+      color: var(--fg);
+      outline: none;
+    }
+
+    .search-area-inner input::placeholder {
+      color: var(--muted-fg);
+    }
+
+    .search-clear {
+      background: none;
+      border: none;
+      color: var(--muted-fg);
+      font-size: 1rem;
+      padding: .2rem;
+      cursor: pointer;
+      display: none;
+    }
+
+    .search-hint {
+      font-size: .78rem;
+      color: var(--muted-fg);
+      text-align: center;
+    }
+
+    .search-hint kbd {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: .3rem;
+      padding: .05rem .35rem;
+      font-family: var(--font-body);
+      font-size: .72rem;
+    }
+
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .accordion-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: .9rem 1rem 1.1rem;
+      box-shadow: var(--shadow-sm);
+      border-left: 4px solid transparent;
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease, background .22s ease;
+    }
+
+    .accordion-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-left-color: var(--primary);
+    }
+
+    .accordion-item[data-section="mental"].open { border-left-color: hsl(0,60%,60%); }
+    .accordion-item[data-section="community"].open { border-left-color: var(--secondary); }
+    .accordion-item[data-section="skills"].open { border-left-color: hsl(270,42%,52%); }
+    .accordion-item[data-section="family"].open { border-left-color: hsl(210,55%,48%); }
+
+    .accordion-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      background: transparent;
+      border: none;
+      text-align: left;
+      padding: .25rem;
+      color: var(--fg);
+      font: inherit;
+      cursor: pointer;
+      border-radius: .8rem;
+      transition: background .18s ease;
+    }
+
+    .accordion-header:hover {
+      background: var(--primary-soft);
+    }
+
+    .acc-icon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: .6rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+      color: var(--primary);
+    }
+
+    .acc-title {
+      flex: 1;
+      text-align: left;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .acc-count {
+      margin-left: auto;
+      background: transparent;
+      color: var(--muted-fg);
+      font-size: .68rem;
+      font-weight: 600;
+      padding: .15rem .35rem;
+      border-radius: .5rem;
+      letter-spacing: .03em;
+      flex-shrink: 0;
+      opacity: .85;
+      transition: color .2s, opacity .2s;
+    }
+
+    .accordion-item.open .acc-count {
+      color: var(--primary-dark);
+      opacity: 1;
+    }
+
+    .acc-arrow {
+      width: 1.45rem;
+      height: 1.45rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--muted);
+      font-size: .82rem;
+      color: var(--muted-fg);
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .accordion-item.open .acc-arrow {
+      transform: rotate(180deg);
+      background: var(--primary-soft);
+    }
+
+    .accordion-body {
+      display: none;
+    }
+
+    .services-grid {
+      gap: 1.25rem;
+      padding-top: 1.25rem;
+    }
+
+    .service-card {
+      height: 100%;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .service-card p {
+      margin-bottom: 1rem;
+      line-height: 1.65;
+      color: var(--muted-fg);
+    }
+
+    .details-list {
+      margin-top: .85rem;
+    }
+
+    .details-list div {
+      font-size: .92rem;
+      color: var(--fg);
+    }
+
+    .details-list div + div {
+      margin-top: .35rem;
+    }
+
+    .service-card .pill-btn,
+    .primary-card .pill-btn {
+      margin-top: 1rem;
+    }
+
+    .cant-find {
+      background: var(--primary-soft);
+      border: 1.5px dashed var(--primary-light);
+      border-radius: 1.25rem;
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cant-find-text {
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .cant-find .btn {
+      margin-left: auto;
+    }
+
+    .cant-find-text h4 {
+      margin-bottom: .25rem;
+      color: var(--primary-dark);
+    }
+
+    .cant-find-text p {
+      margin: 0;
+      font-size: .9rem;
+      color: var(--muted-fg);
+    }
+
+    .how-it-works {
+      background: var(--bg-alt);
+      border-radius: 1.5rem;
+      padding: 2.5rem 2rem;
+      margin: 3rem 0 0;
+    }
+
+    .how-it-works h3 {
+      text-align: center;
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      color: var(--fg);
+    }
+
+    .how-steps {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .how-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: .65rem;
+    }
+
+    .how-step-num {
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px hsla(152,38%,40%,.3);
+      flex-shrink: 0;
+    }
+
+    .how-step h4 {
+      font-size: .95rem;
+      margin: 0;
+      color: var(--fg);
+    }
+
+    .how-step p {
+      font-size: .83rem;
+      margin: 0;
+      color: var(--muted-fg);
+    }
+
+    .how-arrow {
+      font-size: 1.4rem;
+      color: var(--primary);
+      opacity: .35;
+    }
+
+    #search-empty {
+      background: var(--muted);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+
+    .footer-note {
+      font-size: .75rem;
+      margin-top: .75rem;
+    }
+
+    .travel-note {
+      margin-top: .75rem;
+    }
+
+    @media (max-width: 640px) {
+      .stats-bar .stat-item {
+        flex: 1 1 45%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,.2);
+        padding: .75rem 1rem;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .stats-bar .stat-item:nth-last-child(-n+2) {
+        border-bottom: none;
+      }
+
+      .how-steps {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .how-arrow {
+        display: none;
+      }
+
+      .cant-find {
+        flex-direction: column;
+      }
+      .service-card-img { display: none; }
+    }
+
+    /* -- Service card photo thumbnail ------------------------- */
+    .service-card-img {
+      width: calc(100% + 3.7rem);
+      margin: -1.85rem -1.85rem 1.1rem;
+      height: 148px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+    .service-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .55s ease;
+      display: block;
+    }
+    .service-card:hover .service-card-img img {
+      transform: scale(1.08);
+    }
+    .service-card-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.14);
+      pointer-events: none;
+    }
+    /* Move category accent to bottom now that image covers top */
+    .service-card.cat-mental    { border-top: none; border-bottom: 3px solid hsl(0,60%,65%); }
+    .service-card.cat-community { border-top: none; border-bottom: 3px solid var(--secondary); }
+    .service-card.cat-skills    { border-top: none; border-bottom: 3px solid hsl(270,42%,55%); }
+    .service-card.cat-family    { border-top: none; border-bottom: 3px solid hsl(210,55%,52%); }
+
+    .cta-content .btn-group {
+      margin-top: 1.25rem;
+      gap: .85rem;
+    }
+
+    .sos-btn {
+      padding: .62rem 1.08rem;
+      font-size: .75rem;
+      box-shadow: 0 6px 16px hsla(0, 72%, 51%, .3);
+    }
+
+    .sos-btn:hover {
+      box-shadow: 0 9px 20px hsla(0, 72%, 51%, .38);
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header id="site-header">
+    <nav>
+      <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="Community Wellbeing Hub Logo" style="height:48px; width:auto; vertical-align:middle;" />
+          <span style="margin-left: 0.5em; vertical-align:middle; font-weight: bold; font-size: 1.2em;">Wellbeing Hub</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html" aria-current="page">Services</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="booking.html">Book</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <button class="theme-btn" id="theme-btn" aria-label="Toggle dark mode">🌙</button>
+        <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="services.html" aria-current="page">Services</a>
+      <a href="events.html">Events</a>
+      <a href="booking.html">Book</a>
+      <a href="news.html">News</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="job-seekers.html">Job Seekers</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container pt-sm">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span aria-current="page">Services</span>
+      </nav>
+    </div>
+
+    <section class="hero">
+      <div class="hero-bg">
+        <img
+          src="images/hero-counselling.jpg"
+          alt="Calm counselling and wellbeing support session"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="container container-width">
+        <div class="hero-content services-hero-copy">
+          <span class="badge">Our Services</span>
+          <h1>Support for everyday wellbeing needs</h1>
+          <p>We provide support across mental health, physical wellbeing, family services, housing advice, and employment guidance. Our services are free, confidential, and designed to be easy to access.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="text-center mb-14 fade-up">
+        <h2 class="section-title">Explore all services</h2>
+        <p class="section-sub">Browse support by category or search by topic. Select any section to view the services available.</p>
+
+        <div class="search-area fade-up">
+          <div class="search-area-inner">
+            <span aria-hidden="true">🔍</span>
+            <input
+              type="text"
+              id="service-search"
+              placeholder="Search services, for example counselling, housing, yoga"
+              aria-label="Search services"
+              autocomplete="off"
+            />
+            <button
+              id="search-clear"
+              class="search-clear"
+              onclick="clearSearch()"
+              aria-label="Clear search"
+            >✕</button>
+          </div>
+          <p class="search-hint">Press <kbd>/</kbd> to focus search. Results update as you type.</p>
+        </div>
+      </div>
+
+      <div id="search-empty">
+        <div style="font-size: 2rem; margin-bottom: .75rem;">🔍</div>
+        <h3>No services found</h3>
+        <p class="mt-sm">Try a different keyword or clear your search to view all categories again.</p>
+        <button onclick="clearSearch()" class="pill-btn mt-md">Clear search</button>
+      </div>
+
+      <div class="accordion" id="services-accordion">
+
+        <div class="accordion-item open" data-section="mental">
+          <button class="accordion-header" aria-expanded="true" aria-controls="section-mental" id="btn-mental">
+            <span class="acc-icon">🧠</span>
+            <span class="acc-title">Mental Health &amp; Wellbeing</span>
+            <span class="acc-count">2 services</span>
+            <span class="acc-arrow" aria-hidden="true">▼</span>
+          </button>
+
+          <div class="accordion-body" id="section-mental" role="region" aria-labelledby="btn-mental" style="display:block;">
+            <div class="grid grid-2 services-grid">
+              <div class="service-card cat-mental" data-keywords="mental health counselling therapy anxiety depression trauma emotional wellbeing support session">
+                <div class="service-card-img"><img src="images/service-wellbeing.jpg" alt="Mental health counselling support" loading="lazy"></div>
+                <div class="icon-box icon-primary">🧠</div>
+                <h3>Mental Health Counselling</h3>
+                <p>Confidential one-to-one support for anxiety, low mood, trauma, stress, and emotional wellbeing. Sessions are available in person or online.</p>
+                <div class="details-list">
+                  <div>• Individual counselling sessions</div>
+                  <div>• Emotional wellbeing support</div>
+                  <div>• Referral to specialist services where needed</div>
+                </div>
+                <a href="booking.html?service=Counselling%20Session" class="pill-btn">Book support →</a>
+              </div>
+
+              <div class="service-card cat-mental" data-keywords="crisis support urgent help emergency referral safety planning immediate support nhs">
+                <div class="service-card-img"><img src="images/service-crisis.jpg" alt="Crisis support and referral services" loading="lazy"></div>
+                <div class="icon-box icon-primary">🚨</div>
+                <h3>Crisis Support &amp; Referrals</h3>
+                <p>Immediate guidance for people who need urgent support, including safety planning and referral to appropriate local and NHS services.</p>
+                <div class="details-list">
+                  <div>• Immediate crisis response</div>
+                  <div>• Safety planning support</div>
+                  <div>• Referral to urgent services</div>
+                </div>
+                <button class="pill-btn" onclick="showSOS()">Urgent support →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-section="community">
+          <button class="accordion-header" aria-expanded="false" aria-controls="section-community" id="btn-community">
+            <span class="acc-icon">👥</span>
+            <span class="acc-title">Community &amp; Support Groups</span>
+            <span class="acc-count">3 services</span>
+            <span class="acc-arrow" aria-hidden="true">▼</span>
+          </button>
+
+          <div class="accordion-body" id="section-community" role="region" aria-labelledby="btn-community">
+            <div class="grid grid-2 services-grid">
+              <div class="service-card cat-community" data-keywords="community groups social clubs coffee mornings peer support connection isolation activities">
+                <div class="service-card-img"><img src="images/community-group.jpg" alt="Community group gathering and social activities" loading="lazy"></div>
+                <div class="icon-box icon-secondary">🤝</div>
+                <h3>Community Groups &amp; Events</h3>
+                <p>Regular local activities designed to reduce isolation, build confidence, and help residents connect with others in a safe and friendly setting.</p>
+                <div class="details-list">
+                  <div>• Weekly coffee mornings</div>
+                  <div>• Peer support groups</div>
+                  <div>• Social and community activities</div>
+                </div>
+                <a href="events.html" class="pill-btn">View events →</a>
+              </div>
+
+              <div class="service-card cat-community" data-keywords="fitness yoga pilates movement exercise classes physical health walking">
+                <div class="service-card-img"><img src="images/service-chair-yoga.jpg" alt="Gentle yoga and fitness class" loading="lazy"></div>
+                <div class="icon-box icon-secondary">💪</div>
+                <h3>Fitness &amp; Movement Classes</h3>
+                <p>Accessible physical activity sessions to help improve energy, mobility, and confidence, including gentle exercise and group movement classes.</p>
+                <div class="details-list">
+                  <div>• Yoga and pilates</div>
+                  <div>• Dance and movement sessions</div>
+                  <div>• Outdoor walking activities</div>
+                </div>
+                <a href="booking.html?service=Yoga%20Class" class="pill-btn">Check availability →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-section="skills">
+          <button class="accordion-header" aria-expanded="false" aria-controls="section-skills" id="btn-skills">
+            <span class="acc-icon">🎓</span>
+            <span class="acc-title">Skills, Training &amp; Work</span>
+            <span class="acc-count">3 services</span>
+            <span class="acc-arrow" aria-hidden="true">▼</span>
+          </button>
+
+          <div class="accordion-body" id="section-skills" role="region" aria-labelledby="btn-skills">
+            <div class="grid grid-2 services-grid">
+              <div class="service-card cat-skills" data-keywords="skills employment cv interview digital literacy job career training workshops">
+                <div class="service-card-img"><img src="images/service-digital.jpg" alt="Digital skills and employment workshop" loading="lazy"></div>
+                <div class="icon-box icon-purple">💼</div>
+                <h3>Skills &amp; Employment Support</h3>
+                <p>Practical guidance for residents who want to improve job readiness, digital confidence, and employability through workshops and one-to-one help.</p>
+                <div class="details-list">
+                  <div>• CV and cover letter workshops</div>
+                  <div>• Interview preparation</div>
+                  <div>• Digital skills support</div>
+                </div>
+                <a href="job-seekers.html" class="pill-btn">Learn more →</a>
+              </div>
+
+              <div class="service-card cat-skills" data-keywords="housing welfare advice tenancy rights benefits social housing support consultation">
+                <div class="service-card-img"><img src="images/service-housing.jpg" alt="Housing and welfare advice consultation" loading="lazy"></div>
+                <div class="icon-box icon-purple">🏠</div>
+                <h3>Housing &amp; Welfare Advice</h3>
+                <p>Guidance on housing applications, tenancy issues, and welfare support, with signposting to the right services when further help is needed.</p>
+                <div class="details-list">
+                  <div>• Housing application support</div>
+                  <div>• Tenancy advice</div>
+                  <div>• Benefits guidance</div>
+                </div>
+                <a href="contact.html" class="pill-btn">Request advice →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" data-section="family">
+          <button class="accordion-header" aria-expanded="false" aria-controls="section-family" id="btn-family">
+            <span class="acc-icon">🏠</span>
+            <span class="acc-title">Family Support &amp; Housing</span>
+            <span class="acc-count">2 services</span>
+            <span class="acc-arrow" aria-hidden="true">▼</span>
+          </button>
+
+          <div class="accordion-body" id="section-family" role="region" aria-labelledby="btn-family">
+            <div class="grid grid-2 services-grid">
+              <div class="service-card cat-family" data-keywords="youth programmes after school clubs mentoring young people creative workshops support">
+                <div class="service-card-img"><img src="images/service-youth.jpg" alt="Youth programme activities and mentoring" loading="lazy"></div>
+                <div class="icon-box icon-indigo">👧</div>
+                <h3>Youth Programmes (11–18)</h3>
+                <p>Structured youth support designed to build confidence, encourage participation, and provide a safe space for young people after school and during community activities.</p>
+                <div class="details-list">
+                  <div>• After-school activities</div>
+                  <div>• Mentoring support</div>
+                  <div>• Creative workshops</div>
+                </div>
+                <a href="contact.html" class="pill-btn">Get youth support →</a>
+              </div>
+
+              <div class="service-card cat-family" data-keywords="family support parenting workshops counselling parents children household support groups">
+                <div class="service-card-img"><img src="images/service-nutrition.jpg" alt="Family support and parenting workshop" loading="lazy"></div>
+                <div class="icon-box icon-indigo">👨‍👩‍👧‍👦</div>
+                <h3>Family Support &amp; Parenting</h3>
+                <p>Support for parents and carers through workshops, guidance, and family-focused advice to help strengthen communication and confidence at home.</p>
+                <div class="details-list">
+                  <div>• Parenting workshops</div>
+                  <div>• Family guidance sessions</div>
+                  <div>• Support groups for parents and carers</div>
+                </div>
+                <a href="booking.html?service=Consultation" class="pill-btn">Book now →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cant-find fade-up">
+        <div class="cant-find-text">
+          <h4>Not sure which service is right for you?</h4>
+          <p>Our team can listen to your needs and help you find the most suitable service without using difficult language or complicated forms.</p>
+        </div>
+        <a href="contact.html" class="btn shrink-0">Talk to us</a>
+      </div>
+    </section>
+
+    <section class="section container padding-top-0">
+      <div class="how-it-works fade-up">
+        <h3>How it works</h3>
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="how-step-num">1</div>
+            <h4>Choose a service</h4>
+            <p>Browse the categories and find the support that matches your needs.</p>
+          </div>
+
+          <div class="how-arrow" aria-hidden="true">→</div>
+
+          <div class="how-step">
+            <div class="how-step-num">2</div>
+            <h4>Book or contact us</h4>
+            <p>Use the booking page or speak to the team directly for help.</p>
+          </div>
+
+          <div class="how-arrow" aria-hidden="true">→</div>
+
+          <div class="how-step">
+            <div class="how-step-num">3</div>
+            <h4>Receive support</h4>
+            <p>Attend your session, activity, or consultation and get the help you need.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container padding-top-0">
+      <div class="cta-banner fade-up">
+        <img
+          src="images/hero-community-event.jpg"
+          alt="Residents taking part in a local community support session"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="cta-overlay" style="background:hsla(195,65%,29%,.78);"></div>
+        <div class="cta-content">
+          <h2>Ready to get started?</h2>
+          <p>Browse the services, Book a session, or contact the team if you would like help choosing the right support.</p>
+          <div class="btn-group">
+            <a href="booking.html?service=Consultation" class="btn btn-primary">Book a service →</a>
+            <a href="contact.html" class="btn btn-ghost">Ask a question</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="Community Wellbeing Hub logo" style="height:36px;width:auto;" loading="lazy" decoding="async" />
+          <span>Wellbeing Hub</span>
+        </div>
+        <p>Your local point of access for health, support, and community wellbeing services in Dagenham and surrounding areas.</p>
+        <p class="footer-note">Developed to support local residents through clear information, easy access, and community-focused care.</p>
+      </div>
+
+      <div>
+        <h4>Navigate</h4>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="events.html">Events</a>
+          <a href="booking.html">Book</a>
+          <a href="news.html">News</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="job-seekers.html">Job Seekers</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <div class="footer-contact">
+          <p><strong>Address:</strong> 123 Community Lane, Dagenham, RM10</p>
+          <p><strong>Phone:</strong> 0123-456-789</p>
+          <p><strong>Email:</strong> hello@wellbeinghub.com</p>
+        </div>
+
+        <h4 class="mt-lg">Support</h4>
+        <div class="footer-contact">
+          <p>Use the urgent support button for immediate help.</p>
+          <p>For general enquiries, contact the hub directly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">© 2026 Wellbeing Hub. All rights reserved.</div>
+  </footer>
+
+  <button class="sos-btn" onclick="showSOS()" aria-label="Get urgent help">
+    <div class="sos-icon">SOS</div>
+    URGENT HELP
+  </button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+</body>
+</html>

@@ -1,0 +1,323 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wellbeing Hub – Community Health & Support Centre</title>
+  <meta name="description" content="Your local community wellbeing hub in Dagenham. Free mental health support, events, job seekers programmes, and crisis help." />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <meta name="theme-color" content="#3f8f67" />
+  <meta property="og:title" content="Wellbeing Hub – Community Health & Support Centre" />
+  <meta property="og:description" content="Your local community wellbeing hub in Dagenham. Free mental health support, events, job seekers programmes, and crisis help." />
+  <meta property="og:image" content="images/hero-community-people.jpg" />
+  <meta property="og:url" content="https://prayogbhattarai.github.io/community-wellbeing-hub/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wellbeing Hub – Community Health & Support Centre" />
+  <meta name="twitter:description" content="Your local community wellbeing hub in Dagenham. Free mental health support, events, job seekers programmes, and crisis help." />
+  <meta name="twitter:image" content="images/hero-community-people.jpg" />
+  <link rel="canonical" href="https://prayogbhattarai.github.io/community-wellbeing-hub/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Community Wellbeing Hub Logo" style="height:48px; width:auto; vertical-align:middle;" />
+        <span style="margin-left: 0.5em; vertical-align:middle; font-weight: bold; font-size: 1.2em;">Wellbeing Hub</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="booking.html">Book</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-btn" id="theme-btn" aria-label="Toggle dark mode">🌙</button>
+        <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="services.html">Services</a>
+      <a href="events.html">Events</a>
+      <a href="booking.html">Book</a>
+      <a href="news.html">News</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="job-seekers.html">Job Seekers</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HOME PAGE -->
+    <!-- Hero -->
+    <section class="hero hero-min-height">
+      <div class="hero-bg">
+        <img src="images/hero-community.jpg" alt="Diverse group of happy people in a park" loading="eager" fetchpriority="high" decoding="async" />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="container container-width">
+        <div class="hero-content">
+          <h1>Your Community<br>Wellbeing Hub</h1>
+          <p>A safe, welcoming space for anyone needing information, advice, or support to improve their health and happiness. No referral needed — just walk in.</p>
+          <div class="btn-group">
+            <a href="booking.html" class="btn btn-white">Book a Free Session →</a>
+            <a href="services.html" class="btn btn-ghost">Explore Services</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Daily Wellbeing Tip Ticker -->
+    <div class="wellbeing-ticker" aria-live="polite" aria-label="Daily wellbeing tip">
+      <span class="ticker-label">💡 Today's Tip</span>
+      <p class="ticker-text" id="wellbeing-tip"></p>
+    </div>
+
+    <!-- What We Offer -->
+    <section class="section container">
+      <div class="text-center mb-14 fade-up">
+        <h2 class="section-title">What We Offer</h2>
+        <p class="section-sub">Comprehensive, free support services — all under one roof.</p>
+      </div>
+      <div class="grid grid-3" style="gap:1.25rem;">
+        <a class="svc-card svc-mental fade-up" href="services.html">
+          <div class="icon-box icon-primary">🧠</div>
+          <h3>Mental Health</h3>
+          <p>Confidential counselling and therapy with BACP-accredited professionals.</p>
+          <span class="learn-more">Learn more →</span>
+        </a>
+        <a class="svc-card svc-community fade-up" href="services.html">
+          <div class="icon-box icon-secondary">👥</div>
+          <h3>Community Groups</h3>
+          <p>Social clubs, coffee mornings, and peer-support networks.</p>
+          <span class="learn-more">Learn more →</span>
+        </a>
+        <a class="svc-card svc-crisis fade-up" href="services.html">
+          <div class="icon-box icon-danger">🚨</div>
+          <h3>Crisis Support</h3>
+          <p>Helpline and emergency referrals when you need it most.</p>
+          <span class="learn-more">Learn more →</span>
+        </a>
+        <a class="svc-card svc-skills fade-up" href="job-seekers.html">
+          <div class="icon-box icon-accent">🎓</div>
+          <h3>Skills & Training</h3>
+          <p>CV workshops, digital literacy, and vocational courses.</p>
+          <span class="learn-more">Learn more →</span>
+        </a>
+        <a class="svc-card svc-youth fade-up" href="services.html">
+          <div class="icon-box icon-purple">🎯</div>
+          <h3>Youth Programs</h3>
+          <p>After-school clubs, mentoring, and creative workshops for ages 11–18.</p>
+          <span class="learn-more">Learn more →</span>
+        </a>
+        <a class="svc-card svc-housing fade-up" href="services.html">
+          <div class="icon-box icon-teal">🏠</div>
+          <h3>Housing Advice</h3>
+          <p>Expert guidance on social housing applications and tenancy rights.</p>
+          <span class="learn-more">Learn more →</span>
+        </a>
+      </div>
+      <div class="text-center" style="margin-top:2.5rem;">
+        <a href="services.html" class="learn-more" style="font-size:1rem;">View all services →</a>
+      </div>
+    </section>
+
+    <!-- Mood Check-in Widget -->
+    <section class="section container padding-top-0">
+      <div class="mood-widget fade-up">
+        <h3>How are you feeling today? 💭</h3>
+        <p>Select your mood and we'll suggest the best support for you right now.</p>
+        <div class="mood-options" role="group" aria-label="Mood selector">
+          <button class="mood-btn" data-mood="great" aria-label="Feeling great">😄<span>Great</span></button>
+          <button class="mood-btn" data-mood="okay" aria-label="Feeling okay">😊<span>Okay</span></button>
+          <button class="mood-btn" data-mood="low" aria-label="Feeling low">😔<span>Low</span></button>
+          <button class="mood-btn" data-mood="anxious" aria-label="Feeling anxious">😰<span>Anxious</span></button>
+          <button class="mood-btn" data-mood="stressed" aria-label="Feeling stressed">😣<span>Stressed</span></button>
+        </div>
+        <div class="mood-result" id="mood-result" role="region" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Info Grid -->
+    <section class="section container padding-top-0">
+      <div class="grid grid-3">
+        <div class="info-card fade-up">
+          <div class="icon-box icon-primary">🕐</div>
+          <h3>Opening Hours</h3>
+          <div class="hours-row"><span>Mon – Fri</span><strong>9 AM – 8 PM</strong></div>
+          <div class="hours-row"><span>Saturday</span><strong>10 AM – 4 PM</strong></div>
+          <div class="hours-row"><span>Sunday</span><strong class="closed">Closed</strong></div>
+        </div>
+        <div class="info-card fade-up">
+          <div class="icon-box icon-secondary">📍</div>
+          <h3>Find Us</h3>
+          <p>123 Community Lane<br>Dagenham, RM10 7XY</p>
+          <p style="margin-top:.75rem;">🚶 5 min walk from Dagenham East<br>🅿️ Free parking available</p>
+        </div>
+        <div class="primary-card fade-up">
+          <div class="icon-box">📅</div>
+          <h3>Next Event</h3>
+          <p class="evt-name">Mindful Nature Walk</p>
+          <p class="evt-date" id="next-event-date">Loading...</p>
+          <a href="events.html" class="pill-btn">See All Events →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="section container padding-top-0">
+      <div class="cta-banner fade-up">
+        <img src="images/hero-community-cta.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        <div class="cta-overlay" style="background:hsla(150,25%,45%,.87);"></div>
+        <div class="cta-content">
+          <h2>New to the Hub?</h2>
+          <p>Whether you need mental health support, fitness classes, or just a friendly face — we're here. No appointment needed for your first visit.</p>
+          <div class="btn-group">
+            <a href="booking.html" class="btn btn-primary">Book a Session →</a>
+            <a href="about.html" class="btn btn-ghost">Learn About Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="Community Wellbeing Hub" loading="lazy" decoding="async" />
+        </div>
+        <p>Your central point of contact for health, happiness, and community support. Serving Dagenham and surrounding areas since 2020.</p>
+        <div class="social-links">
+          <a class="social-link" href="#">📘 Facebook</a>
+          <a class="social-link" href="#">📸 Instagram</a>
+          <a class="social-link" href="#">🐦 Twitter</a>
+        </div>
+        <p style="color:var(--muted-fg);font-size:0.875rem;margin-top:.75rem;">In partnership with local council services.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="events.html">Events</a>
+          <a href="booking.html">Book</a>
+          <a href="news.html">News</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="job-seekers.html">Job Seekers</a>
+        </div>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="footer-contact">
+          <p>📍 123 Community Lane, Dagenham, RM10</p>
+          <p>📞 0123-456-789</p>
+          <p>✉️ hello@wellbeinghub.com</p>
+        </div>
+        <h4 style="margin-top:1.5rem;">Need Help?</h4>
+        <div class="footer-contact">
+          <p>🆘 Use the SOS button for urgent support</p>
+          <p>📞 Or call our hub directly</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom"><p style="margin:0;padding:0.5rem 0;font-weight:500;color:var(--fg);">© 2026 Wellbeing Hub. All rights reserved.</p><p style="margin:0;padding:0.5rem 0;font-size:0.875rem;color:var(--muted-fg);">Committed to supporting your health, happiness, and wellbeing in our community.</p></div>
+  </footer>
+
+  <!-- SOS Button -->
+  <button class="sos-btn" onclick="showSOS()" aria-label="Get urgent help">
+    <div class="sos-icon">SOS</div>
+    URGENT HELP
+  </button>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+  <script>
+    // Next event date
+    function getNextTuesday() {
+      const today = new Date();
+      const day = today.getDay();
+      const diff = day <= 2 ? 2 - day : 9 - day;
+      const d = new Date(today);
+      d.setDate(today.getDate() + (diff === 0 ? 7 : diff));
+      return d;
+    }
+    function fmtDateShort(d) {
+      return d.toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long' });
+    }
+    const el = document.getElementById('next-event-date');
+    if (el) el.textContent = fmtDateShort(getNextTuesday()) + ' · 10:00 AM';
+
+    // -- Daily Wellbeing Tip Ticker --------------------------
+    const tips = [
+      "Taking a 10-minute walk outside can reduce anxiety and instantly boost your mood.",
+      "Talking to someone you trust is one of the most powerful things you can do for your mental health.",
+      "Small acts of kindness — giving or receiving — release feel-good hormones in your brain.",
+      "Good sleep is the foundation of wellbeing. Most adults need 7–9 hours each night.",
+      "Deep breathing for just 2 minutes can lower cortisol and calm your nervous system.",
+      "Connecting with your local community reduces loneliness and increases life satisfaction.",
+      "It's okay to ask for help — reaching out is a sign of strength, not weakness.",
+      "Spending time in green spaces lowers blood pressure and reduces stress hormones.",
+      "Writing 3 things you're grateful for each day improves long-term happiness.",
+      "Even gentle stretching for 10 minutes improves both your mood and focus."
+    ];
+    const tipEl = document.getElementById('wellbeing-tip');
+    if (tipEl) {
+      let tipIndex = new Date().getDay() % tips.length;
+      tipEl.textContent = tips[tipIndex];
+      setTimeout(() => tipEl.classList.add('show'), 150);
+      setInterval(() => {
+        tipEl.classList.remove('show');
+        setTimeout(() => {
+          tipIndex = (tipIndex + 1) % tips.length;
+          tipEl.textContent = tips[tipIndex];
+          tipEl.classList.add('show');
+        }, 650);
+      }, 8000);
+    }
+
+    // -- Mood Check-in Widget --------------------------------
+    const moodData = {
+      great:   { emoji: '😄', title: 'Wonderful! Keep that energy going!', text: 'Share the good vibes → join one of our community groups or social events this week.', link: 'events.html', cta: 'See Events →' },
+      okay:    { emoji: '😊', title: "That's perfectly fine.", text: 'Our social activities and community groups are a great way to lift your spirits a little more.', link: 'events.html', cta: 'Browse Events →' },
+      low:     { emoji: '😔', title: "We're here for you.", text: 'When you\'re feeling low, talking to someone really helps. Our mental health team offers free, confidential support.', link: 'services.html', cta: 'Get Support →' },
+      anxious: { emoji: '😰', title: "You're not alone.", text: 'Anxiety is very common. Our counselling and mindfulness sessions are a safe, judgement-free space for you.', link: 'booking.html', cta: 'Book a Free Session →' },
+      stressed:{ emoji: '😣', title: "Let's ease that pressure.", text: 'Our wellbeing sessions, yoga classes, and drop-in support can give you real relief today.', link: 'booking.html', cta: 'Book a Free Session →' }
+    };
+    document.querySelectorAll('.mood-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        const data = moodData[btn.dataset.mood];
+        const result = document.getElementById('mood-result');
+        if (result && data) {
+          result.classList.remove('show');
+          setTimeout(() => {
+            result.innerHTML = `<h4>${data.emoji} ${data.title}</h4><p>${data.text}</p><a href="${data.link}" class="pill-btn">${data.cta}</a>`;
+            result.classList.add('show');
+          }, 50);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,97 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Events — Wellbeing Hub</title>
+  <meta name="description" content="Join community events, fitness classes, workshops and support circles at the Wellbeing Hub in Dagenham." />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <meta property="og:title" content="Events — Wellbeing Hub" />
+  <meta property="og:description" content="Join community events, fitness classes, workshops and support circles at the Wellbeing Hub in Dagenham." />
+  <meta property="og:image" content="images/hero-workshop.jpg" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" /><script defer src="js/app.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header id="site-header"><nav><a href="index.html" class="logo"><img src="images/logo.png" alt="Community Wellbeing Hub Logo" style="height:48px; width:auto; vertical-align:middle;" /><span style="margin-left: 0.5em; vertical-align:middle; font-weight: bold; font-size: 1.2em;">Wellbeing Hub</span></a>
+      <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="events.html" aria-current="page">Events</a></li><li><a href="booking.html">Book</a></li><li><a href="news.html">News</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+      <div class="nav-right"><button class="theme-btn" id="theme-btn" aria-label="Toggle dark mode">🌙</button><button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button></div></nav>
+    <div class="mobile-menu" id="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="events.html" aria-current="page">Events</a><a href="booking.html">Book</a><a href="news.html">News</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="job-seekers.html">Job Seekers</a></div>
+  </header>
+  <main id="main">
+    <div class="container" style="padding-top: 1rem;">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span aria-current="page">Events</span>
+      </nav>
+    </div>
+    <section class="hero hero-min-height"><div class="hero-bg"><img src="images/hero-workshop.jpg" alt="People learning together at a community workshop" loading="eager" /><div class="hero-overlay"></div></div>
+      <div class="container container-width"><div class="hero-content"><span class="badge">Community Calendar</span><h1>Upcoming Events & Activities</h1><p>Join us for fitness classes, social gatherings, workshops, and support circles designed to connect and empower our community.</p></div></div></section>
+
+    <section class="section container"><div class="text-center mb-14 fade-up"><h2 class="section-title">This Week's Activities</h2><p class="section-sub">Drop in anytime — no booking required for most events. Filter by category below.</p></div>
+      
+      <!-- Filter Buttons -->
+      <div class="filter-buttons fade-up">
+        <button class="filter-btn active" data-category="all">All Events</button>
+        <button class="filter-btn" data-category="fitness">Fitness</button>
+        <button class="filter-btn" data-category="social">Social</button>
+        <button class="filter-btn" data-category="skills">Skills</button>
+        <button class="filter-btn" data-category="youth">Youth</button>
+        <button class="filter-btn" data-category="family">Family</button>
+      </div>
+
+      <div class="grid grid-2" style="gap:2rem;">
+        <div class="event-card featured-event fade-up" data-category="social">
+          <div class="event-date"><span class="day">Mon</span><span class="num">18</span></div><div class="event-details"><div class="event-meta"><span class="event-tag tag-social">Social</span></div><h3>Mindful Nature Walk</h3><p class="event-time">Time: 10:00 AM – 11:30 AM</p><p class="event-location">Location: Meeting point: Hub entrance</p><p>Join us for a gentle 45-minute walk through local green spaces. All ages welcome. Builds community while improving wellbeing.</p><a href="booking.html?service=Group%20Activity&step=2" class="pill-btn">Reserve Your Spot →</a></div></div>
+        
+        <div class="event-card fade-up" data-category="social">
+          <div class="event-date"><span class="day">Tue</span><span class="num">19</span></div><div class="event-details"><div class="event-meta"><span class="event-tag tag-social">Social</span><span class="event-tag tag-family">Community</span></div><h3>Coffee & Conversation Circle</h3><p class="event-time">Time: 2:00 PM – 3:30 PM</p><p class="event-location">Location: Main Hub, Café Area</p><p>Casual peer-support group. Connect with others, share experiences, and build friendships in a relaxed setting.</p><a href="booking.html?service=Group%20Activity&step=2" class="pill-btn">Join the Circle →</a></div></div>
+        
+        <div class="event-card fade-up" data-category="fitness">
+          <div class="event-date"><span class="day">Wed</span><span class="num">20</span></div><div class="event-details"><div class="event-meta"><span class="event-tag tag-fitness">Fitness</span><span class="event-tag tag-fitness">Mental Health</span></div><h3>Yoga & Breathwork Class</h3><p class="event-time">Time: 6:00 PM – 7:00 PM</p><p class="event-location">Location: Studio B</p><p>All-level yoga session focusing on relaxation and mindfulness. Bring a mat. Free for Hub members.</p><a href="booking.html?service=Yoga%20Class&step=2" class="pill-btn">Reserve Your Mat →</a></div></div>
+        
+        <div class="event-card fade-up" data-category="skills">
+          <div class="event-date"><span class="day">Thu</span><span class="num">21</span></div><div class="event-details"><div class="event-meta"><span class="event-tag tag-skills">Skills</span></div><h3>Digital Skills Drop-In</h3><p class="event-time">Time: 1:00 PM – 3:00 PM</p><p class="event-location">Location: Computer Room</p><p>Learn the basics: email, internet browsing, using social media safely. No experience needed.</p><a href="booking.html?service=Workshop&step=2" class="pill-btn">Start Learning →</a></div></div>
+        
+        <div class="event-card fade-up" data-category="youth">
+          <div class="event-date"><span class="day">Fri</span><span class="num">22</span></div><div class="event-details"><div class="event-meta"><span class="event-tag tag-youth">Youth</span><span class="event-tag tag-social">Social</span></div><h3>Youth After-School Club</h3><p class="event-time">Time: 4:00 PM – 6:00 PM</p><p class="event-location">Location: Youth Wing</p><p>Games, creativity, mentoring, and snacks. Ages 11–18. Safe, inclusive space to relax and make friends.</p><a href="contact.html" class="pill-btn">Register Your Place →</a></div></div>
+        
+        <div class="event-card fade-up" data-category="family">
+          <div class="event-date"><span class="day">Sat</span><span class="num">23</span></div><div class="event-details"><div class="event-meta"><span class="event-tag tag-family">Family</span><span class="event-tag tag-fitness">Fitness</span></div><h3>Family Fitness Day</h3><p class="event-time">Time: 10:00 AM – 12:00 PM</p><p class="event-location">Location: Multi-purpose Hall</p><p>Dance, games, and movement for all ages. Bring the whole family for a fun, active morning together.</p><a href="booking.html?service=Group%20Activity&step=2" class="pill-btn">Book Family Session →</a></div></div>
+      </div>
+    </section>
+
+    <section class="section container"><div class="text-center mb-14 fade-up"><h2 class="section-title">Recurring Weekly Classes</h2><p class="section-sub">Every week, same time, same place.</p></div>
+      <div class="grid grid-2" style="gap:2rem;">
+        <div class="recurring-card fade-up" data-category="fitness">
+          <div class="icon-box">🧘</div><div class="event-meta"><span class="event-tag tag-fitness">Fitness</span></div><h3>Pilates for Core Strength</h3><p class="recurring-time">Tuesdays & Thursdays • 7:00 PM – 8:00 PM</p><p>Low-impact, full-body strengthening. Perfect for beginners and experienced alike.</p><a href="booking.html?service=Pilates%20Class&step=2" class="pill-btn">Book This Class →</a></div>
+        
+        <div class="recurring-card fade-up" data-category="fitness">
+          <div class="icon-box">🧘‍♀️</div><div class="event-meta"><span class="event-tag tag-fitness">Mental Health</span></div><h3>Evening Meditation Circle</h3><p class="recurring-time">Monday, Wednesday, Friday • 5:30 PM – 6:15 PM</p><p>Guided 45-minute sessions for stress relief, mindfulness, and inner peace.</p><a href="booking.html?service=Group%20Activity&step=2" class="pill-btn">Join Meditation →</a></div>
+        
+        <div class="recurring-card fade-up" data-category="social">
+          <div class="icon-box">🎨</div><div class="event-meta"><span class="event-tag tag-social">Social</span></div><h3>Creative Art & Craft Workshops</h3><p class="recurring-time">Saturdays • 2:00 PM – 4:00 PM</p><p>Express yourself through painting, collage, pottery, and mixed media. All materials provided.</p><a href="booking.html?service=Workshop&step=2" class="pill-btn">Save My Spot →</a></div>
+        
+        <div class="recurring-card fade-up" data-category="skills">
+          <div class="icon-box">📚</div><div class="event-meta"><span class="event-tag tag-skills">Skills</span></div><h3>Reading & Book Club</h3><p class="recurring-time">Second Sunday • 3:00 PM – 4:30 PM</p><p>Discuss new releases, classics, and favorite stories. Snacks included. No experience required.</p><a href="booking.html?service=Group%20Activity&step=2" class="pill-btn">Join Book Club →</a></div>
+      </div>
+    </section>
+
+    <section class="section container padding-top-0"><div class="cta-banner fade-up">
+        <img src="images/hero-event-cta.jpg" alt="Community members connecting at an event" /><div class="cta-overlay" style="background:hsla(150,25%,45%,.87);"></div>
+        <div class="cta-content"><h2>Can't Find What You're Looking For?</h2><p>Custom workshops, private sessions, and group bookings available. Contact us to discuss your needs.</p>
+          <div class="btn-group"><a href="contact.html" class="btn btn-primary">Request a Custom Session →</a><a href="services.html" class="btn btn-ghost">Browse All Services</a></div></div></div></section></main>
+
+  <footer><div class="footer-grid"><div><div class="footer-logo"><img src="images/logo.png" alt="Community Wellbeing Hub" /></div><p>Your central point of contact for health, happiness, and community support. Serving Dagenham and surrounding areas since 2020.</p><p style="opacity:.5;font-size:.75rem;margin-top:.75rem;">In partnership with local council services.</p><div class="social-links"><a class="social-link" href="#">📘 Facebook</a><a class="social-link" href="#">📸 Instagram</a><a class="social-link" href="#">🐦 Twitter</a></div></div>
+      <div><h4>Navigate</h4><div class="footer-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="events.html">Events</a><a href="booking.html">Book</a><a href="news.html">News</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="job-seekers.html">Job Seekers</a></div></div>
+      <div><h4>Contact</h4><div class="footer-contact"><p>📍 123 Community Lane, Dagenham, RM10</p><p>📞 0123-456-789</p><p>✉️ hello@wellbeinghub.com</p></div><h4 style="margin-top:1.5rem;">Need Help?</h4><div class="footer-contact"><p>🆘 Use the SOS button for urgent support</p><p>📞 Or call our hub directly</p></div></div></div>
+    <div class="footer-bottom">© 2026 Wellbeing Hub. All rights reserved.</div></footer>
+
+  <button class="sos-btn" onclick="showSOS()" aria-label="Get urgent help"><div class="sos-icon">SOS</div>URGENT HELP</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+</body>
+</html>
+
+
+
