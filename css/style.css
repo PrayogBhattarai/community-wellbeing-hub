@@ -2627,6 +2627,29 @@ footer::before {
   flex-shrink: 0;
   transition: background .2s, color .2s;
 }
+
+/* Accordion header thumbnail */
+.acc-img {
+  width: 5rem;
+  height: 3.2rem;
+  border-radius: .5rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-left: .75rem;
+  opacity: .85;
+  transition: opacity .2s;
+}
+.acc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.accordion-item.open .acc-img { opacity: .5; }
+@media (max-width: 480px) { .acc-img { display: none; } }
+
+/* Checkmarks in details list */
+.details-list div { color: var(--fg); font-size: .92rem; }
 .accordion-item[data-section="mental"].open    .acc-count { background: hsl(0,100%,94%);  color: hsl(0,68%,50%); }
 .accordion-item[data-section="community"].open .acc-count { background: hsl(195,65%,90%); color: hsl(195,65%,32%); }
 .accordion-item[data-section="skills"].open    .acc-count { background: hsl(270,55%,93%); color: hsl(270,55%,40%); }
