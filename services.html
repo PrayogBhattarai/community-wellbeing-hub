@@ -63,7 +63,7 @@
   </header>
 
   <main id="main">
-    <div class="container pt-sm">
+    <div class="container">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="index.html">Home</a>
         <span>/</span>
@@ -147,7 +147,7 @@
                   <div>• Emotional wellbeing support</div>
                   <div>• Referral to specialist services where needed</div>
                 </div>
-                <a href="booking.html?service=Counselling%20Session" class="pill-btn">Book support →</a>
+                <a href="booking.html?service=Counselling%20Session" class="pill-btn" aria-label="Book a Mental Health Counselling session">Book support →</a>
               </article>
 
               <article class="service-card cat-mental" data-keywords="crisis support urgent help emergency referral safety planning immediate support nhs">
@@ -160,7 +160,7 @@
                   <div>• Safety planning support</div>
                   <div>• Referral to urgent services</div>
                 </div>
-                <button class="pill-btn" onclick="showSOS()">Urgent support →</button>
+                <button class="pill-btn" onclick="showSOS()" aria-label="Get urgent crisis support and referrals">Urgent support →</button>
               </article>
             </div>
           </div>
@@ -186,7 +186,7 @@
                   <div>• Peer support groups</div>
                   <div>• Social and community activities</div>
                 </div>
-                <a href="events.html" class="pill-btn">View events →</a>
+                <a href="events.html" class="pill-btn" aria-label="View community groups and events">View events →</a>
               </article>
 
               <article class="service-card cat-community" data-keywords="fitness yoga pilates movement exercise classes physical health walking">
@@ -199,7 +199,7 @@
                   <div>• Dance and movement sessions</div>
                   <div>• Outdoor walking activities</div>
                 </div>
-                <a href="booking.html?service=Yoga%20Class" class="pill-btn">Check availability →</a>
+                <a href="booking.html?service=Yoga%20Class" class="pill-btn" aria-label="Check availability for Fitness and Movement Classes">Check availability →</a>
               </article>
             </div>
           </div>
@@ -225,7 +225,7 @@
                   <div>• Interview preparation</div>
                   <div>• Digital skills support</div>
                 </div>
-                <a href="job-seekers.html" class="pill-btn">Learn more →</a>
+                <a href="job-seekers.html" class="pill-btn" aria-label="Learn more about Skills and Employment Support">Learn more →</a>
               </article>
 
               <article class="service-card cat-skills" data-keywords="housing welfare advice tenancy rights benefits social housing support consultation">
@@ -238,7 +238,7 @@
                   <div>• Tenancy advice</div>
                   <div>• Benefits guidance</div>
                 </div>
-                <a href="contact.html" class="pill-btn">Request advice →</a>
+                <a href="contact.html" class="pill-btn" aria-label="Request housing and welfare advice">Request advice →</a>
               </article>
             </div>
           </div>
@@ -264,7 +264,7 @@
                   <div>• Mentoring support</div>
                   <div>• Creative workshops</div>
                 </div>
-                <a href="contact.html" class="pill-btn">Get youth support →</a>
+                <a href="contact.html" class="pill-btn" aria-label="Get youth programme support for ages 11 to 18">Get youth support →</a>
               </article>
 
               <article class="service-card cat-family" data-keywords="family support parenting workshops counselling parents children household support groups">
@@ -277,7 +277,7 @@
                   <div>• Family guidance sessions</div>
                   <div>• Support groups for parents and carers</div>
                 </div>
-                <a href="booking.html?service=Consultation" class="pill-btn">Book now →</a>
+                <a href="booking.html?service=Consultation" class="pill-btn" aria-label="Book a family support and parenting consultation">Book now →</a>
               </article>
             </div>
           </div>
@@ -297,29 +297,23 @@
     <section class="section container padding-top-0">
       <div class="how-it-works fade-up">
         <h3>How it works</h3>
-        <div class="how-steps">
-          <div class="how-step">
-            <div class="how-step-num">1</div>
+        <ol class="how-steps" aria-label="Three steps to access a service">
+          <li class="how-step">
+            <div class="how-step-num" aria-hidden="true">1</div>
             <h4>Choose a service</h4>
             <p>Browse the categories and find the support that matches your needs.</p>
-          </div>
-
-          <div class="how-arrow" aria-hidden="true">→</div>
-
-          <div class="how-step">
-            <div class="how-step-num">2</div>
+          </li>
+          <li class="how-step">
+            <div class="how-step-num" aria-hidden="true">2</div>
             <h4>Book or contact us</h4>
             <p>Use the booking page or speak to the team directly for help.</p>
-          </div>
-
-          <div class="how-arrow" aria-hidden="true">→</div>
-
-          <div class="how-step">
-            <div class="how-step-num">3</div>
+          </li>
+          <li class="how-step">
+            <div class="how-step-num" aria-hidden="true">3</div>
             <h4>Receive support</h4>
             <p>Attend your session, activity, or consultation and get the help you need.</p>
-          </div>
-        </div>
+          </li>
+        </ol>
       </div>
     </section>
 

@@ -182,6 +182,7 @@ function initServicesPage() {
 
   function resetAccordion() {
     accordionItems.forEach((item, index) => {
+      item.style.display = '';
       item.querySelectorAll('.service-card').forEach(card => {
         card.style.display = '';
       });
@@ -251,11 +252,13 @@ function initServicesPage() {
         if (match) sectionVisible += 1;
       });
 
-      // Auto-expand sections with matches; collapse empty ones
+      // Auto-expand sections with matches; hide empty ones entirely
       if (sectionVisible > 0) {
+        item.style.display = '';
         openAccordion(item);
       } else {
         closeAccordion(item);
+        item.style.display = 'none';
       }
 
       // Update count badge dynamically
