@@ -1,0 +1,20 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Git commit and push",
+			"type": "shell",
+			"command": "git add services.html css/style.css js/app.js && git commit -m \"Refactor: move services CSS to stylesheet, semantic article tags, sticky search, smart search count\" && git push"
+		},
+		{
+			"label": "Git push services refactor",
+			"type": "shell",
+			"command": "git add services.html css/style.css js/app.js; git commit -m 'Refactor: move services CSS to stylesheet, semantic article tags, sticky search, smart search count'; git push"
+		},
+		{
+			"label": "Git push via cmd",
+			"type": "shell",
+			"command": "cmd /c \"git add services.html css/style.css js/app.js && git commit -m \\\"Refactor: services CSS to stylesheet, article tags, sticky+smart search\\\" && git push\""
+		}
+	]
+}
