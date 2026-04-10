@@ -153,6 +153,15 @@ function initServicesPage() {
 
   const headers = document.querySelectorAll('.accordion-header');
 
+  // Store original total counts so we can restore them after clearing search
+  accordionItems.forEach(item => {
+    const countEl = item.querySelector('.acc-count');
+    if (countEl) {
+      item.dataset.totalCount = item.querySelectorAll('.service-card').length;
+      item.dataset.originalLabel = countEl.textContent;
+    }
+  });
+
   function openAccordion(item) {
     const header = item.querySelector('.accordion-header');
     const body = item.querySelector('.accordion-body');
@@ -176,6 +185,12 @@ function initServicesPage() {
       item.querySelectorAll('.service-card').forEach(card => {
         card.style.display = '';
       });
+
+      // Restore original count label
+      const countEl = item.querySelector('.acc-count');
+      if (countEl && item.dataset.originalLabel) {
+        countEl.textContent = item.dataset.originalLabel;
+      }
 
       if (index === 0) {
         openAccordion(item);
@@ -236,10 +251,23 @@ function initServicesPage() {
         if (match) sectionVisible += 1;
       });
 
+      // Auto-expand sections with matches; collapse empty ones
       if (sectionVisible > 0) {
         openAccordion(item);
       } else {
         closeAccordion(item);
+      }
+
+      // Update count badge dynamically
+      const countEl = item.querySelector('.acc-count');
+      if (countEl) {
+        if (sectionVisible > 0) {
+          countEl.textContent = sectionVisible === 1
+            ? '1 result'
+            : `${sectionVisible} results`;
+        } else {
+          countEl.textContent = '0 results';
+        }
       }
 
       totalVisible += sectionVisible;
