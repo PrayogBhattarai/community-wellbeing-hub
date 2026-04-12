@@ -194,7 +194,7 @@ function initServicesPage() {
       }
 
       if (index === 0) {
-        openAccordion(item);
+        closeAccordion(item);
       } else {
         closeAccordion(item);
       }
@@ -318,6 +318,8 @@ function initBookingWizard() {
     const serviceRadio = document.querySelector(`input[name="service"][value="${selectedService}"]`);
     if (serviceRadio) {
       serviceRadio.checked = true;
+      const card = serviceRadio.closest('.service-card-select');
+      if (card) card.classList.add('selected');
     }
   }
 
@@ -333,7 +335,7 @@ function initBookingWizard() {
     const currentEl = getStepElement(step);
     if (currentEl) currentEl.style.display = 'block';
 
-    document.querySelectorAll('.step-btn').forEach((btn, index) => {
+    document.querySelectorAll('.step-item, .step-btn').forEach((btn, index) => {
       const stepNum = index + 1;
       btn.classList.remove('active', 'done');
 
@@ -405,7 +407,7 @@ function initBookingWizard() {
     if (currentStep === 1) {
       const service = document.querySelector('input[name="service"]:checked');
       if (!service) {
-        const serviceList = stepElement.querySelector('.service-list');
+        const serviceList = stepElement.querySelector('.service-cards-grid, .service-list');
         if (serviceList) {
           const error = document.createElement('div');
           error.className = 'field-error';

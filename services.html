@@ -22,7 +22,193 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <script defer src="js/app.js"></script>
+  <style>
+    /* ── Coloured accordion headers (services page) ──────── */
+    .acc-mental   { background: hsl(152, 45%, 93%); border-color: hsl(152,35%,82%) !important; }
+    .acc-community{ background: hsl(218, 42%, 92%); border-color: hsl(218,35%,82%) !important; }
+    .acc-skills   { background: hsl(48,  75%, 92%); border-color: hsl(48, 55%,78%) !important; }
+    .acc-family   { background: hsl(0,   65%, 93%); border-color: hsl(0,  50%,82%) !important; }
 
+    .acc-mental .accordion-header,
+    .acc-mental .accordion-header:hover,
+    .accordion-item.acc-mental.open .accordion-header  { background: transparent; color: var(--fg); }
+    .acc-community .accordion-header,
+    .acc-community .accordion-header:hover,
+    .accordion-item.acc-community.open .accordion-header { background: transparent; color: var(--fg); }
+    .acc-skills .accordion-header,
+    .acc-skills .accordion-header:hover,
+    .accordion-item.acc-skills.open .accordion-header  { background: transparent; color: var(--fg); }
+    .acc-family .accordion-header,
+    .acc-family .accordion-header:hover,
+    .accordion-item.acc-family.open .accordion-header  { background: transparent; color: var(--fg); }
+
+    .accordion-item[class*="acc-"] .accordion-body {
+      background: var(--card);
+      border-top: 1px solid rgba(0,0,0,.07);
+    }
+
+    /* icon circles */
+    .acc-icon-circle {
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .acc-mental   .acc-icon-circle { background: hsl(152,45%,82%); }
+    .acc-community .acc-icon-circle { background: hsl(218,42%,84%); }
+    .acc-skills   .acc-icon-circle { background: hsl(48, 75%,80%); }
+    .acc-family   .acc-icon-circle { background: hsl(0,  65%,86%); }
+
+    /* text group inside header */
+    .acc-text-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: .2rem;
+    }
+    .acc-count {
+      display: inline-block;
+      font-size: .65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: .18rem .62rem;
+      border-radius: 2rem;
+      width: fit-content;
+    }
+    .acc-mental   .acc-count { background: hsl(152,45%,78%); color: hsl(152,45%,22%); }
+    .acc-community .acc-count { background: hsl(218,42%,80%); color: hsl(218,42%,22%); }
+    .acc-skills   .acc-count { background: hsl(48, 75%,76%); color: hsl(48, 55%,22%); }
+    .acc-family   .acc-count { background: hsl(0,  65%,83%); color: hsl(0,  50%,26%); }
+
+    /* ── Stats strip ─────────────────────────────────────── */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 600px) {
+      .stats-strip { grid-template-columns: 1fr 1fr; }
+    }
+    .stat-item {
+      text-align: center;
+      padding: 1.6rem 1rem;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.1rem;
+      color: var(--primary);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--muted-fg);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-top: .45rem;
+      display: block;
+    }
+
+    /* ── Category jump chips ──────────────────────────────── */
+    .cat-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      justify-content: center;
+      margin: 1.5rem 0 2rem;
+    }
+    .cat-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .48rem 1rem;
+      border-radius: 2rem;
+      font-size: .83rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: transform .18s, box-shadow .18s;
+      font-family: var(--font-body);
+      line-height: 1;
+    }
+    .cat-chip:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .cat-chip-mental    { background: hsl(152,45%,90%); color: hsl(152,45%,26%); border-color: hsl(152,35%,78%); }
+    .cat-chip-community { background: hsl(218,42%,90%); color: hsl(218,42%,26%); border-color: hsl(218,35%,78%); }
+    .cat-chip-skills    { background: hsl(48, 75%,88%); color: hsl(48, 55%,24%); border-color: hsl(48, 55%,72%); }
+    .cat-chip-family    { background: hsl(0,  65%,91%); color: hsl(0,  50%,28%); border-color: hsl(0,  50%,78%); }
+
+    /* ── Testimonials ─────────────────────────────────────── */
+    .testimonials-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    @media (max-width: 700px) {
+      .testimonials-strip { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 701px) and (max-width: 900px) {
+      .testimonials-strip { grid-template-columns: 1fr 1fr; }
+    }
+    .testimonial-card {
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.5rem 1.25rem;
+      position: relative;
+      box-shadow: var(--shadow-xs);
+    }
+    .testimonial-quote {
+      font-size: 2.8rem;
+      font-family: var(--font-display);
+      color: var(--primary-light);
+      line-height: .8;
+      margin-bottom: .5rem;
+      opacity: .55;
+    }
+    .testimonial-stars {
+      color: hsl(40,90%,50%);
+      font-size: .82rem;
+      margin-bottom: .6rem;
+      letter-spacing: .05em;
+    }
+    .testimonial-text {
+      font-size: .88rem;
+      color: var(--fg);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .testimonial-author {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--muted-fg);
+    }
+    .testimonials-heading {
+      text-align: center;
+      margin: 3rem 0 1.5rem;
+    }
+    .testimonials-heading h3 {
+      font-size: 1.4rem;
+      margin-bottom: .35rem;
+    }
+    .testimonials-heading p {
+      font-size: .9rem;
+      color: var(--muted-fg);
+    }
+  </style>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -122,6 +308,14 @@
         </div>
       </div>
 
+      <!-- Category jump chips -->
+      <div class="cat-chips fade-up">
+        <button class="cat-chip cat-chip-mental"    onclick="jumpToCategory('mental')">🧠 Mental Health</button>
+        <button class="cat-chip cat-chip-community" onclick="jumpToCategory('community')">👥 Community</button>
+        <button class="cat-chip cat-chip-skills"    onclick="jumpToCategory('skills')">🎓 Skills &amp; Work</button>
+        <button class="cat-chip cat-chip-family"    onclick="jumpToCategory('family')">👨‍👩‍👧 Family &amp; Youth</button>
+      </div>
+
       <div id="search-empty">
         <div style="font-size: 2rem; margin-bottom: .75rem;">🔍</div>
         <h3>No services found</h3>
@@ -131,16 +325,17 @@
 
       <div class="accordion" id="services-accordion">
 
-        <div class="accordion-item open" data-section="mental">
-          <button class="accordion-header" aria-expanded="true" aria-controls="section-mental" id="btn-mental">
-            <span class="acc-icon">🧠</span>
-            <span class="acc-title">Mental Health &amp; Wellbeing</span>
-            <span class="acc-count">2 services</span>
-            <span class="acc-img" aria-hidden="true"><img src="images/service-wellbeing.jpg" alt=""></span>
+        <div class="accordion-item acc-mental" data-section="mental">
+          <button class="accordion-header" aria-expanded="false" aria-controls="section-mental" id="btn-mental">
+            <span class="acc-icon-circle">🧠</span>
+            <span class="acc-text-group">
+              <span class="acc-title">Mental Health &amp; Wellbeing</span>
+              <span class="acc-count">2 Services</span>
+            </span>
             <span class="acc-arrow" aria-hidden="true">▼</span>
           </button>
 
-          <div class="accordion-body" id="section-mental" role="region" aria-labelledby="btn-mental" style="display:block;">
+          <div class="accordion-body" id="section-mental" role="region" aria-labelledby="btn-mental">
             <div class="grid grid-2 services-grid">
               <article class="service-card cat-mental" data-keywords="mental health counselling therapy anxiety depression trauma emotional wellbeing support session">
                 <div class="service-card-img"><img src="images/service-wellbeing.jpg" alt="Mental health counselling support" loading="lazy"></div>
@@ -171,12 +366,13 @@
           </div>
         </div>
 
-        <div class="accordion-item" data-section="community">
+        <div class="accordion-item acc-community" data-section="community">
           <button class="accordion-header" aria-expanded="false" aria-controls="section-community" id="btn-community">
-            <span class="acc-icon">👥</span>
-            <span class="acc-title">Community &amp; Support Groups</span>
-            <span class="acc-count">2 services</span>
-            <span class="acc-img" aria-hidden="true"><img src="images/community-group.jpg" alt=""></span>
+            <span class="acc-icon-circle">👥</span>
+            <span class="acc-text-group">
+              <span class="acc-title">Community &amp; Support Groups</span>
+              <span class="acc-count">2 Services</span>
+            </span>
             <span class="acc-arrow" aria-hidden="true">▼</span>
           </button>
 
@@ -211,12 +407,13 @@
           </div>
         </div>
 
-        <div class="accordion-item" data-section="skills">
+        <div class="accordion-item acc-skills" data-section="skills">
           <button class="accordion-header" aria-expanded="false" aria-controls="section-skills" id="btn-skills">
-            <span class="acc-icon">🎓</span>
-            <span class="acc-title">Skills, Training &amp; Work</span>
-            <span class="acc-count">2 services</span>
-            <span class="acc-img" aria-hidden="true"><img src="images/service-digital.jpg" alt=""></span>
+            <span class="acc-icon-circle">🎓</span>
+            <span class="acc-text-group">
+              <span class="acc-title">Skills, Training &amp; Work</span>
+              <span class="acc-count">2 Services</span>
+            </span>
             <span class="acc-arrow" aria-hidden="true">▼</span>
           </button>
 
@@ -251,12 +448,13 @@
           </div>
         </div>
 
-        <div class="accordion-item" data-section="family">
+        <div class="accordion-item acc-family" data-section="family">
           <button class="accordion-header" aria-expanded="false" aria-controls="section-family" id="btn-family">
-            <span class="acc-icon">🏠</span>
-            <span class="acc-title">Family Support &amp; Youth</span>
-            <span class="acc-count">2 services</span>
-            <span class="acc-img" aria-hidden="true"><img src="images/service-youth.jpg" alt=""></span>
+            <span class="acc-icon-circle">👨‍👩‍👧</span>
+            <span class="acc-text-group">
+              <span class="acc-title">Family Support &amp; Youth</span>
+              <span class="acc-count">2 Services</span>
+            </span>
             <span class="acc-arrow" aria-hidden="true">▼</span>
           </button>
 
@@ -299,6 +497,32 @@
           <p>Our team can listen to your needs and help you find the most suitable service — no complicated forms or difficult language.</p>
         </div>
         <a href="contact.html" class="btn shrink-0">Talk to us</a>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="testimonials-heading fade-up">
+        <h3>What residents say</h3>
+        <p>Real experiences from people who have used our services.</p>
+      </div>
+      <div class="testimonials-strip">
+        <div class="testimonial-card fade-up">
+          <div class="testimonial-quote">&ldquo;</div>
+          <p class="testimonial-stars">★★★★★</p>
+          <p class="testimonial-text">The counselling service genuinely changed my life. I was struggling for months and finally felt heard. I can&rsquo;t thank the team enough.</p>
+          <p class="testimonial-author">— Sarah M., Dagenham resident</p>
+        </div>
+        <div class="testimonial-card fade-up">
+          <div class="testimonial-quote">&ldquo;</div>
+          <p class="testimonial-stars">★★★★★</p>
+          <p class="testimonial-text">The skills workshop helped me put together a CV I&rsquo;m actually proud of. I got a job offer just three weeks after attending.</p>
+          <p class="testimonial-author">— James T., local job seeker</p>
+        </div>
+        <div class="testimonial-card fade-up">
+          <div class="testimonial-quote">&ldquo;</div>
+          <p class="testimonial-stars">★★★★★</p>
+          <p class="testimonial-text">My daughter attends the youth programme every week. She&rsquo;s so much more confident and has made real friends. Brilliant service.</p>
+          <p class="testimonial-author">— Priya K., parent</p>
+        </div>
       </div>
     </section>
 
@@ -395,5 +619,26 @@
     URGENT HELP
   </button>
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+  <script>
+    window.jumpToCategory = function(section) {
+      const allItems = document.querySelectorAll('.accordion-item');
+      const target   = document.querySelector(`.accordion-item[data-section="${section}"]`);
+      if (!target) return;
+      allItems.forEach(item => {
+        const h = item.querySelector('.accordion-header');
+        const b = item.querySelector('.accordion-body');
+        item.classList.remove('open');
+        if (h) h.setAttribute('aria-expanded', 'false');
+        if (b) b.style.display = 'none';
+      });
+      target.classList.add('open');
+      const th = target.querySelector('.accordion-header');
+      const tb = target.querySelector('.accordion-body');
+      if (th) th.setAttribute('aria-expanded', 'true');
+      if (tb) tb.style.display = 'block';
+      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+    };
+  </script>
 </body>
 </html>
