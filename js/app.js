@@ -352,15 +352,24 @@ function initBookingWizard() {
   }
 
   function updateSelectedServiceNotice() {
-    const note = document.getElementById('selected-service-note');
-    const nameEl = document.getElementById('selected-service-name');
+    const note    = document.getElementById('selected-service-note');
+    const nameEl  = document.getElementById('selected-service-name');
+    const emojiEl = document.getElementById('selected-svc-emoji');
     if (!note || !nameEl) return;
 
-    const selected = document.querySelector('input[name="service"]:checked')?.value;
+    const checked  = document.querySelector('input[name="service"]:checked');
+    const selected = checked?.value;
     const shouldShow = currentStep === 2 && !!selected;
 
-    note.style.display = shouldShow ? 'block' : 'none';
-    if (selected) nameEl.textContent = selected;
+    note.style.display = shouldShow ? 'flex' : 'none';
+    if (selected) {
+      nameEl.textContent = selected;
+      if (emojiEl && checked) {
+        const card  = checked.closest('.service-card-select');
+        const emoji = card?.querySelector('.svc-emoji')?.textContent?.trim() || '🗓️';
+        emojiEl.textContent = emoji;
+      }
+    }
   }
 
   const changeServiceLink = document.getElementById('change-service-link');

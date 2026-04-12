@@ -431,6 +431,61 @@
       flex-shrink: 0;
     }
     .service-card-select.selected .svc-check { display: flex; }
+
+    /* -- Selected service mini-card (step 2 banner) -------- */
+    .selected-svc-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      border-radius: .85rem;
+      padding: .85rem 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+    .selected-svc-left {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .selected-svc-emoji {
+      width: 2.2rem;
+      height: 2.2rem;
+      background: var(--primary-soft);
+      border-radius: .5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .selected-svc-info strong {
+      display: block;
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--fg);
+      line-height: 1.3;
+    }
+    .selected-svc-info span {
+      font-size: .75rem;
+      color: var(--muted-fg);
+    }
+    .change-svc-btn {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-soft);
+      border: 1px solid var(--primary-light);
+      border-radius: 2rem;
+      padding: .32rem .85rem;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: background .18s;
+      font-family: var(--font-body);
+    }
+    .change-svc-btn:hover { background: var(--primary-light); color: #fff; }
   </style>
 </head>
 <body>
@@ -547,12 +602,19 @@
           </div>
 
           <div id="step-2" style="display: none;">
-            <h2>Step 2: Pick Date &amp; Time</h2>
+            <h2 style="margin-bottom:.4rem;">Pick a Date &amp; Time</h2>
             <p style="color:var(--muted-fg);margin-bottom:1.5rem;">When would you like to visit?</p>
 
-            <div id="selected-service-note" style="display:none;background:var(--primary-soft);border:1px solid var(--primary-light);border-radius:.8rem;padding:.7rem .9rem;margin-bottom:1rem;font-size:.9rem;">
-              Service selected: <strong id="selected-service-name">—</strong>
-              <a href="#" id="change-service-link" style="margin-left:.6rem;font-weight:700;">Change service</a>
+            <!-- Selected service mini-card -->
+            <div id="selected-service-note" class="selected-svc-banner" style="display:none;">
+              <div class="selected-svc-left">
+                <div class="selected-svc-emoji" id="selected-svc-emoji">🗓️</div>
+                <div class="selected-svc-info">
+                  <strong id="selected-service-name">—</strong>
+                  <span>Selected service</span>
+                </div>
+              </div>
+              <a href="#" id="change-service-link" class="change-svc-btn">✎ Change</a>
             </div>
 
             <!-- Date input + calendar toggle -->
@@ -614,8 +676,8 @@
           </div>
 
           <div id="step-3" style="display: none;">
-            <h2>Step 3: Your Details</h2>
-            <p style="color: var(--muted-fg); margin-bottom: 2rem;">Tell us about yourself.</p>
+            <h2 style="margin-bottom:.4rem;">Your Details</h2>
+            <p style="color: var(--muted-fg); margin-bottom: 2rem;">Tell us a bit about yourself.</p>
 
             <div class="form-group">
               <label for="name">Full Name <span aria-hidden="true">*</span></label>
@@ -647,8 +709,8 @@
           </div>
 
           <div id="step-4" style="display: none;">
-            <h2>Step 4: Review & Confirm</h2>
-            <p style="color: var(--muted-fg); margin-bottom: 2rem;">Please review your booking details.</p>
+            <h2 style="margin-bottom:.4rem;">Review &amp; Confirm</h2>
+            <p style="color: var(--muted-fg); margin-bottom: 2rem;">Please check your booking details below.</p>
 
             <div class="summary-box">
               <h3>📋 Your Booking</h3>
